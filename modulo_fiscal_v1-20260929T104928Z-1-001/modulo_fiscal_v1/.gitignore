@@ -1,0 +1,29 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Test data / local files
+*.zip
+*.pdf
+IMAGENS_BALANCETE/
+xml_nfe_*/
+nf_teste_*/
+lote_teste_*/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Streamlit secrets (keep local only)
+.streamlit/secrets.toml
+
+# Test scripts (optional, remove if you want them in repo)
+# generate_test_data.py
+# test_pipeline.py

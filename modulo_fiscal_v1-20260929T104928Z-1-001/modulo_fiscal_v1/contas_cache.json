@@ -1,0 +1,2741 @@
+{
+  "obras": [
+    {
+      "codigo": 273,
+      "classificacao": "3.1.1.02",
+      "nome_completo": "CETEC SENAI ARAGUAINA CNO 90.016.34480/75",
+      "nome_display": "CETEC SENAI ARAGUAINA",
+      "cno": "90.016.34480/75",
+      "cno_digits": "900163448075",
+      "dropdown_label": "CETEC SENAI ARAGUAINA — Cód. 273 (3.1.1.02) — CNO 90.016.34480/75",
+      "categorias": {
+        "DESPESAS COM ALIMENTAÇAO": {
+          "codigo": 2123,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM ALIMENTAÇAO",
+          "label": "DESPESAS COM ALIMENTAÇAO — Cód. 2123 (3.1.1.02.001)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 277,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 277 (3.1.1.02.001)"
+        },
+        "DESPESAS COM CIMENTO": {
+          "codigo": 1640,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM CIMENTO",
+          "label": "DESPESAS COM CIMENTO — Cód. 1640 (3.1.1.02.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 275,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 275 (3.1.1.02.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 274,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 274 (3.1.1.02.001)"
+        },
+        "DESPESAS COM DIISÓRIAS, FORROS, DRY-WALL": {
+          "codigo": 2053,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM DIISÓRIAS, FORROS, DRY-WALL",
+          "label": "DESPESAS COM DIISÓRIAS, FORROS, DRY-WALL — Cód. 2053 (3.1.1.02.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 280,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 280 (3.1.1.02.001)"
+        },
+        "DESPESAS COM INFORMATICA E SEGURANÇA": {
+          "codigo": 1756,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM INFORMATICA E SEGURANÇA",
+          "label": "DESPESAS COM INFORMATICA E SEGURANÇA — Cód. 1756 (3.1.1.02.001)"
+        },
+        "DESPESAS COM ITENS DIVERSOS": {
+          "codigo": 282,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM ITENS DIVERSOS",
+          "label": "DESPESAS COM ITENS DIVERSOS — Cód. 282 (3.1.1.02.001)"
+        },
+        "DESPESAS COM MADEIRA": {
+          "codigo": 278,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM MADEIRA",
+          "label": "DESPESAS COM MADEIRA — Cód. 278 (3.1.1.02.001)"
+        },
+        "DESPESAS COM MATERIAL DE ESCRITORIO": {
+          "codigo": 2056,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM MATERIAL DE ESCRITORIO",
+          "label": "DESPESAS COM MATERIAL DE ESCRITORIO — Cód. 2056 (3.1.1.02.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 276,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 276 (3.1.1.02.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 497,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 497 (3.1.1.02.001)"
+        },
+        "DESPESAS COM PISO INTERTRAVADOS": {
+          "codigo": 2057,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM PISO INTERTRAVADOS",
+          "label": "DESPESAS COM PISO INTERTRAVADOS — Cód. 2057 (3.1.1.02.001)"
+        },
+        "DESPESAS COM PISOS, CERAMICA": {
+          "codigo": 2051,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM PISOS, CERAMICA",
+          "label": "DESPESAS COM PISOS, CERAMICA — Cód. 2051 (3.1.1.02.001)"
+        },
+        "DESPESAS COM PLASTIFICATE, ADESIVOS, TECK-BOND": {
+          "codigo": 2055,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM PLASTIFICATE, ADESIVOS, TECK-BOND",
+          "label": "DESPESAS COM PLASTIFICATE, ADESIVOS, TECK-BOND — Cód. 2055 (3.1.1.02.001)"
+        },
+        "DESPESAS COM PRÉ-MOLDADOS E CONCRETOS": {
+          "codigo": 2054,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM PRÉ-MOLDADOS E CONCRETOS",
+          "label": "DESPESAS COM PRÉ-MOLDADOS E CONCRETOS — Cód. 2054 (3.1.1.02.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1182,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1182 (3.1.1.02.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1232,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1232 (3.1.1.02.001)"
+        },
+        "DESPESAS COM TELHAS EM GERAL": {
+          "codigo": 1186,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM TELHAS EM GERAL",
+          "label": "DESPESAS COM TELHAS EM GERAL — Cód. 1186 (3.1.1.02.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 281,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 281 (3.1.1.02.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZAÇAO": {
+          "codigo": 279,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZAÇAO",
+          "label": "DESPESAS COM TINTAS E VERNIZAÇAO — Cód. 279 (3.1.1.02.001)"
+        },
+        "DESPESAS COM VIDROS E ACESSORIOS": {
+          "codigo": 2052,
+          "classificacao": "3.1.1.02.001",
+          "nome": "DESPESAS COM VIDROS E ACESSORIOS",
+          "label": "DESPESAS COM VIDROS E ACESSORIOS — Cód. 2052 (3.1.1.02.001)"
+        }
+      }
+    },
+    {
+      "codigo": 285,
+      "classificacao": "3.1.1.03",
+      "nome_completo": "ANFITEATRO SESI ARAGUAINA CNO 90.021.30423/75",
+      "nome_display": "ANFITEATRO SESI ARAGUAINA",
+      "cno": "90.021.30423/75",
+      "cno_digits": "900213042375",
+      "dropdown_label": "ANFITEATRO SESI ARAGUAINA — Cód. 285 (3.1.1.03) — CNO 90.021.30423/75",
+      "categorias": {
+        "DESPESA COM CIMENTO": {
+          "codigo": 2059,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESA COM CIMENTO",
+          "label": "DESPESA COM CIMENTO — Cód. 2059 (3.1.1.03.001)"
+        },
+        "DESPESA COM INFORMATICA E SEGURANÇA": {
+          "codigo": 2058,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESA COM INFORMATICA E SEGURANÇA",
+          "label": "DESPESA COM INFORMATICA E SEGURANÇA — Cód. 2058 (3.1.1.03.001)"
+        },
+        "DESPESA COM TELHAS EM GERAL": {
+          "codigo": 1757,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESA COM TELHAS EM GERAL",
+          "label": "DESPESA COM TELHAS EM GERAL — Cód. 1757 (3.1.1.03.001)"
+        },
+        "DESPESAS COM ALIMENTAÇAO": {
+          "codigo": 2122,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM ALIMENTAÇAO",
+          "label": "DESPESAS COM ALIMENTAÇAO — Cód. 2122 (3.1.1.03.001)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 874,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 874 (3.1.1.03.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 872,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 872 (3.1.1.03.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 871,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 871 (3.1.1.03.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 877,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 877 (3.1.1.03.001)"
+        },
+        "DESPESAS COM ITENS DIVERSOS": {
+          "codigo": 879,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM ITENS DIVERSOS",
+          "label": "DESPESAS COM ITENS DIVERSOS — Cód. 879 (3.1.1.03.001)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1188,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1188 (3.1.1.03.001)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 875,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 875 (3.1.1.03.001)"
+        },
+        "DESPESAS COM MATERIAIS DE ESCRITORIO": {
+          "codigo": 2060,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM MATERIAIS DE ESCRITORIO",
+          "label": "DESPESAS COM MATERIAIS DE ESCRITORIO — Cód. 2060 (3.1.1.03.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 873,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 873 (3.1.1.03.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 1646,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 1646 (3.1.1.03.001)"
+        },
+        "DESPESAS COM PISOS EM GERAL": {
+          "codigo": 1669,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM PISOS EM GERAL",
+          "label": "DESPESAS COM PISOS EM GERAL — Cód. 1669 (3.1.1.03.001)"
+        },
+        "DESPESAS COM PLASTIFICANTES, ADESIVOS, TECK-BOND": {
+          "codigo": 2061,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM PLASTIFICANTES, ADESIVOS, TECK-BOND",
+          "label": "DESPESAS COM PLASTIFICANTES, ADESIVOS, TECK-BOND — Cód. 2061 (3.1.1.03.001)"
+        },
+        "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS": {
+          "codigo": 2062,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS",
+          "label": "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS — Cód. 2062 (3.1.1.03.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1187,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1187 (3.1.1.03.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1233,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1233 (3.1.1.03.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 878,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 878 (3.1.1.03.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZAÇAO": {
+          "codigo": 876,
+          "classificacao": "3.1.1.03.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZAÇAO",
+          "label": "DESPESAS COM TINTAS E VERNIZAÇAO — Cód. 876 (3.1.1.03.001)"
+        }
+      }
+    },
+    {
+      "codigo": 880,
+      "classificacao": "3.1.1.04",
+      "nome_completo": "SEDE SESI SENAI PLMAS-TO CNO 90.023.65439/72",
+      "nome_display": "SEDE SESI SENAI PLMAS-TO",
+      "cno": "90.023.65439/72",
+      "cno_digits": "900236543972",
+      "dropdown_label": "SEDE SESI SENAI PLMAS-TO — Cód. 880 (3.1.1.04) — CNO 90.023.65439/72",
+      "categorias": {
+        "DESPESAS COM ALIMENTAÇAO": {
+          "codigo": 2129,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM ALIMENTAÇAO",
+          "label": "DESPESAS COM ALIMENTAÇAO — Cód. 2129 (3.1.1.04.001)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 884,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 884 (3.1.1.04.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 882,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 882 (3.1.1.04.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 881,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 881 (3.1.1.04.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 887,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 887 (3.1.1.04.001)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1190,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1190 (3.1.1.04.001)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 885,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 885 (3.1.1.04.001)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 889,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 889 (3.1.1.04.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 883,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 883 (3.1.1.04.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 1758,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 1758 (3.1.1.04.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1189,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1189 (3.1.1.04.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1234,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1234 (3.1.1.04.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 888,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 888 (3.1.1.04.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 886,
+          "classificacao": "3.1.1.04.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 886 (3.1.1.04.001)"
+        },
+        "DESPESA COM CIMENTO": {
+          "codigo": 2108,
+          "classificacao": "3.1.1.04.01",
+          "nome": "DESPESA COM CIMENTO",
+          "label": "DESPESA COM CIMENTO — Cód. 2108 (3.1.1.04.01)"
+        }
+      }
+    },
+    {
+      "codigo": 890,
+      "classificacao": "3.1.1.05",
+      "nome_completo": "MATERIAL APLICADO NA OBRA JUSCELINO KUBITSCHEK DE OLIVEIRA",
+      "nome_display": "MATERIAL APLICADO NA OBRA JUSCELINO KUBITSCHEK DE OLIVEIRA",
+      "cno": null,
+      "cno_digits": "",
+      "dropdown_label": "MATERIAL APLICADO NA OBRA JUSCELINO KUBITSCHEK DE OLIVEIRA — Cód. 890 (3.1.1.05)",
+      "categorias": {
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 894,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 894 (3.1.1.05.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 892,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 892 (3.1.1.05.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 891,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 891 (3.1.1.05.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 897,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 897 (3.1.1.05.001)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1191,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1191 (3.1.1.05.001)"
+        },
+        "DESPESAS COM MADEIRA": {
+          "codigo": 895,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM MADEIRA",
+          "label": "DESPESAS COM MADEIRA — Cód. 895 (3.1.1.05.001)"
+        },
+        "DESPESAS COM MATERIAL DE LIMPEZA": {
+          "codigo": 1179,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM MATERIAL DE LIMPEZA",
+          "label": "DESPESAS COM MATERIAL DE LIMPEZA — Cód. 1179 (3.1.1.05.001)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 899,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 899 (3.1.1.05.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 893,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 893 (3.1.1.05.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1235,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1235 (3.1.1.05.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 898,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 898 (3.1.1.05.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZAÇAO": {
+          "codigo": 896,
+          "classificacao": "3.1.1.05.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZAÇAO",
+          "label": "DESPESAS COM TINTAS E VERNIZAÇAO — Cód. 896 (3.1.1.05.001)"
+        }
+      }
+    },
+    {
+      "codigo": 900,
+      "classificacao": "3.1.1.06",
+      "nome_completo": "ETI TAQUARI CNO 90.022.92152/71",
+      "nome_display": "ETI TAQUARI",
+      "cno": "90.022.92152/71",
+      "cno_digits": "900229215271",
+      "dropdown_label": "ETI TAQUARI — Cód. 900 (3.1.1.06) — CNO 90.022.92152/71",
+      "categorias": {
+        "DESPESA COM TIJOLOS": {
+          "codigo": 908,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESA COM TIJOLOS",
+          "label": "DESPESA COM TIJOLOS — Cód. 908 (3.1.1.06.001)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 904,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 904 (3.1.1.06.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 902,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 902 (3.1.1.06.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 901,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 901 (3.1.1.06.001)"
+        },
+        "DESPESAS COM DIVISORIAS, FORROS, DY-WALL": {
+          "codigo": 2126,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM DIVISORIAS, FORROS, DY-WALL",
+          "label": "DESPESAS COM DIVISORIAS, FORROS, DY-WALL — Cód. 2126 (3.1.1.06.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 907,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 907 (3.1.1.06.001)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 905,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 905 (3.1.1.06.001)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 909,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 909 (3.1.1.06.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 903,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 903 (3.1.1.06.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 1193,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 1193 (3.1.1.06.001)"
+        },
+        "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS": {
+          "codigo": 1643,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS",
+          "label": "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS — Cód. 1643 (3.1.1.06.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1180,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1180 (3.1.1.06.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1236,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1236 (3.1.1.06.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 906,
+          "classificacao": "3.1.1.06.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 906 (3.1.1.06.001)"
+        },
+        "MAO-DE-OBRA DIRETA": {
+          "codigo": 1759,
+          "classificacao": "3.1.1.06.001",
+          "nome": "MAO-DE-OBRA DIRETA",
+          "label": "MAO-DE-OBRA DIRETA — Cód. 1759 (3.1.1.06.001)"
+        },
+        "DESPESA COM CIMENTO": {
+          "codigo": 2107,
+          "classificacao": "3.1.1.06.01",
+          "nome": "DESPESA COM CIMENTO",
+          "label": "DESPESA COM CIMENTO — Cód. 2107 (3.1.1.06.01)"
+        }
+      }
+    },
+    {
+      "codigo": 910,
+      "classificacao": "3.1.1.07",
+      "nome_completo": "ETI PORTO LUZIMANGUES CNO 90.022.85498/71",
+      "nome_display": "ETI PORTO LUZIMANGUES",
+      "cno": "90.022.85498/71",
+      "cno_digits": "900228549871",
+      "dropdown_label": "ETI PORTO LUZIMANGUES — Cód. 910 (3.1.1.07) — CNO 90.022.85498/71",
+      "categorias": {
+        "DESPESAS COM ALIMENTACAO": {
+          "codigo": 1655,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM ALIMENTACAO",
+          "label": "DESPESAS COM ALIMENTACAO — Cód. 1655 (3.1.1.07.001)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 914,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 914 (3.1.1.07.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 912,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 912 (3.1.1.07.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 911,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 911 (3.1.1.07.001)"
+        },
+        "DESPESAS COM CONCRETOS; PRÉ-MOLDADOS ...": {
+          "codigo": 1195,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM CONCRETOS; PRÉ-MOLDADOS ...",
+          "label": "DESPESAS COM CONCRETOS; PRÉ-MOLDADOS ... — Cód. 1195 (3.1.1.07.001)"
+        },
+        "DESPESAS COM DIVISORIAS, FORROS, DY-WALL": {
+          "codigo": 2125,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM DIVISORIAS, FORROS, DY-WALL",
+          "label": "DESPESAS COM DIVISORIAS, FORROS, DY-WALL — Cód. 2125 (3.1.1.07.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 917,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 917 (3.1.1.07.001)"
+        },
+        "DESPESAS COM MADEIRA": {
+          "codigo": 915,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM MADEIRA",
+          "label": "DESPESAS COM MADEIRA — Cód. 915 (3.1.1.07.001)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 919,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 919 (3.1.1.07.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 913,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 913 (3.1.1.07.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 1760,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 1760 (3.1.1.07.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1194,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1194 (3.1.1.07.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1237,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1237 (3.1.1.07.001)"
+        },
+        "DESPESAS COM SERVIÇOS DE TERCEIRO": {
+          "codigo": 1644,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM SERVIÇOS DE TERCEIRO",
+          "label": "DESPESAS COM SERVIÇOS DE TERCEIRO — Cód. 1644 (3.1.1.07.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 918,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 918 (3.1.1.07.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 916,
+          "classificacao": "3.1.1.07.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 916 (3.1.1.07.001)"
+        },
+        "DESPESA COM CIMENTO": {
+          "codigo": 2106,
+          "classificacao": "3.1.1.07.01",
+          "nome": "DESPESA COM CIMENTO",
+          "label": "DESPESA COM CIMENTO — Cód. 2106 (3.1.1.07.01)"
+        },
+        "DESPESA COM MASSAS; ARGAMASSA ...": {
+          "codigo": 2110,
+          "classificacao": "3.1.1.07.01",
+          "nome": "DESPESA COM MASSAS; ARGAMASSA ...",
+          "label": "DESPESA COM MASSAS; ARGAMASSA ... — Cód. 2110 (3.1.1.07.01)"
+        },
+        "DESPESA COM PISOS EM GERAL": {
+          "codigo": 2114,
+          "classificacao": "3.1.1.07.01",
+          "nome": "DESPESA COM PISOS EM GERAL",
+          "label": "DESPESA COM PISOS EM GERAL — Cód. 2114 (3.1.1.07.01)"
+        },
+        "DESPESA COM SEURANÇA E INFORMATICA": {
+          "codigo": 2192,
+          "classificacao": "3.1.1.07.01",
+          "nome": "DESPESA COM SEURANÇA E INFORMATICA",
+          "label": "DESPESA COM SEURANÇA E INFORMATICA — Cód. 2192 (3.1.1.07.01)"
+        },
+        "DESPESAS COM TELHAS EM GERAL": {
+          "codigo": 2115,
+          "classificacao": "3.1.1.07.01",
+          "nome": "DESPESAS COM TELHAS EM GERAL",
+          "label": "DESPESAS COM TELHAS EM GERAL — Cód. 2115 (3.1.1.07.01)"
+        },
+        "DESPESAS COM VIDROS, ACESSORIOS": {
+          "codigo": 2247,
+          "classificacao": "3.1.1.07.02",
+          "nome": "DESPESAS COM VIDROS, ACESSORIOS",
+          "label": "DESPESAS COM VIDROS, ACESSORIOS — Cód. 2247 (3.1.1.07.02)"
+        }
+      }
+    },
+    {
+      "codigo": 920,
+      "classificacao": "3.1.1.08",
+      "nome_completo": "SESI DR GURUPI  CNO 90.022.97088/73",
+      "nome_display": "SESI DR GURUPI",
+      "cno": "90.022.97088/73",
+      "cno_digits": "900229708873",
+      "dropdown_label": "SESI DR GURUPI — Cód. 920 (3.1.1.08) — CNO 90.022.97088/73",
+      "categorias": {
+        "DESPESAS COM AREIA, BRITA E SEIXO": {
+          "codigo": 924,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM AREIA, BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA, BRITA E SEIXO — Cód. 924 (3.1.1.08.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 922,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 922 (3.1.1.08.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 921,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 921 (3.1.1.08.001)"
+        },
+        "DESPESAS COM DIVISORIAS, FORROS, DRY-WALL": {
+          "codigo": 2153,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM DIVISORIAS, FORROS, DRY-WALL",
+          "label": "DESPESAS COM DIVISORIAS, FORROS, DRY-WALL — Cód. 2153 (3.1.1.08.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 928,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 928 (3.1.1.08.001)"
+        },
+        "DESPESAS COM MADEIRA": {
+          "codigo": 925,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM MADEIRA",
+          "label": "DESPESAS COM MADEIRA — Cód. 925 (3.1.1.08.001)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 929,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 929 (3.1.1.08.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 923,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 923 (3.1.1.08.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 1665,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 1665 (3.1.1.08.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1196,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1196 (3.1.1.08.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1238,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1238 (3.1.1.08.001)"
+        },
+        "DESPESAS COM SEGURANÇA E INFORMATICA": {
+          "codigo": 1197,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM SEGURANÇA E INFORMATICA",
+          "label": "DESPESAS COM SEGURANÇA E INFORMATICA — Cód. 1197 (3.1.1.08.001)"
+        },
+        "DESPESAS COM SERVIÇOS DE TERCEIRO": {
+          "codigo": 1641,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM SERVIÇOS DE TERCEIRO",
+          "label": "DESPESAS COM SERVIÇOS DE TERCEIRO — Cód. 1641 (3.1.1.08.001)"
+        },
+        "DESPESAS COM TELHAS": {
+          "codigo": 1856,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM TELHAS",
+          "label": "DESPESAS COM TELHAS — Cód. 1856 (3.1.1.08.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 927,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 927 (3.1.1.08.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 926,
+          "classificacao": "3.1.1.08.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 926 (3.1.1.08.001)"
+        },
+        "PRÉ-MOLDADOS E CONCRETOS": {
+          "codigo": 1761,
+          "classificacao": "3.1.1.08.001",
+          "nome": "PRÉ-MOLDADOS E CONCRETOS",
+          "label": "PRÉ-MOLDADOS E CONCRETOS — Cód. 1761 (3.1.1.08.001)"
+        },
+        "DESPESA COM CIMENTO": {
+          "codigo": 2105,
+          "classificacao": "3.1.1.08.01",
+          "nome": "DESPESA COM CIMENTO",
+          "label": "DESPESA COM CIMENTO — Cód. 2105 (3.1.1.08.01)"
+        },
+        "DESPESAS COM ALIMENTAÇÃO": {
+          "codigo": 2191,
+          "classificacao": "3.1.1.08.01",
+          "nome": "DESPESAS COM ALIMENTAÇÃO",
+          "label": "DESPESAS COM ALIMENTAÇÃO — Cód. 2191 (3.1.1.08.01)"
+        },
+        "DESPESAS COM MASSA, ARGAMASSA...": {
+          "codigo": 2121,
+          "classificacao": "3.1.1.08.01",
+          "nome": "DESPESAS COM MASSA, ARGAMASSA...",
+          "label": "DESPESAS COM MASSA, ARGAMASSA... — Cód. 2121 (3.1.1.08.01)"
+        },
+        "DESPESAS COM PLASTIFICANTES, ADESIVOS, TECK-BOND": {
+          "codigo": 2109,
+          "classificacao": "3.1.1.08.01",
+          "nome": "DESPESAS COM PLASTIFICANTES, ADESIVOS, TECK-BOND",
+          "label": "DESPESAS COM PLASTIFICANTES, ADESIVOS, TECK-BOND — Cód. 2109 (3.1.1.08.01)"
+        }
+      }
+    },
+    {
+      "codigo": 930,
+      "classificacao": "3.1.1.09",
+      "nome_completo": "BLOCO IFTO ARAGUAINA CNO 90.017.62270/71",
+      "nome_display": "BLOCO IFTO ARAGUAINA",
+      "cno": "90.017.62270/71",
+      "cno_digits": "900176227071",
+      "dropdown_label": "BLOCO IFTO ARAGUAINA — Cód. 930 (3.1.1.09) — CNO 90.017.62270/71",
+      "categorias": {
+        "DESPESAS COM ALIMENTAÇAO": {
+          "codigo": 2124,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM ALIMENTAÇAO",
+          "label": "DESPESAS COM ALIMENTAÇAO — Cód. 2124 (3.1.1.09.001)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 934,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 934 (3.1.1.09.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 932,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 932 (3.1.1.09.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 931,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 931 (3.1.1.09.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 937,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 937 (3.1.1.09.001)"
+        },
+        "DESPESAS COM ITENS DIVERSOS": {
+          "codigo": 1663,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM ITENS DIVERSOS",
+          "label": "DESPESAS COM ITENS DIVERSOS — Cód. 1663 (3.1.1.09.001)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1199,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1199 (3.1.1.09.001)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 935,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 935 (3.1.1.09.001)"
+        },
+        "DESPESAS COM MATERIAL DE LIMPEZA": {
+          "codigo": 1198,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM MATERIAL DE LIMPEZA",
+          "label": "DESPESAS COM MATERIAL DE LIMPEZA — Cód. 1198 (3.1.1.09.001)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 939,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 939 (3.1.1.09.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 933,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 933 (3.1.1.09.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 1648,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 1648 (3.1.1.09.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1239,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1239 (3.1.1.09.001)"
+        },
+        "DESPESAS COM SERVIÇOS DE TERCEIRO": {
+          "codigo": 1642,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM SERVIÇOS DE TERCEIRO",
+          "label": "DESPESAS COM SERVIÇOS DE TERCEIRO — Cód. 1642 (3.1.1.09.001)"
+        },
+        "DESPESAS COM TELHAS": {
+          "codigo": 1762,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM TELHAS",
+          "label": "DESPESAS COM TELHAS — Cód. 1762 (3.1.1.09.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 938,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 938 (3.1.1.09.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 936,
+          "classificacao": "3.1.1.09.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 936 (3.1.1.09.001)"
+        },
+        "DESPESA COM CIMENTO": {
+          "codigo": 2104,
+          "classificacao": "3.1.1.09.01",
+          "nome": "DESPESA COM CIMENTO",
+          "label": "DESPESA COM CIMENTO — Cód. 2104 (3.1.1.09.01)"
+        }
+      }
+    },
+    {
+      "codigo": 940,
+      "classificacao": "3.1.1.10",
+      "nome_completo": "REFORMA DUQUE DE CAXIAS II CNO 90.022.82473/79",
+      "nome_display": "REFORMA DUQUE DE CAXIAS II",
+      "cno": "90.022.82473/79",
+      "cno_digits": "900228247379",
+      "dropdown_label": "REFORMA DUQUE DE CAXIAS II — Cód. 940 (3.1.1.10) — CNO 90.022.82473/79",
+      "categorias": {
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 944,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 944 (3.1.1.10.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 942,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 942 (3.1.1.10.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 941,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 941 (3.1.1.10.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 947,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 947 (3.1.1.10.001)"
+        },
+        "DESPESAS COM FRETES E CARRETOS": {
+          "codigo": 949,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM FRETES E CARRETOS",
+          "label": "DESPESAS COM FRETES E CARRETOS — Cód. 949 (3.1.1.10.001)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1201,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1201 (3.1.1.10.001)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 945,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 945 (3.1.1.10.001)"
+        },
+        "DESPESAS COM MATERIAL DE LIMPEZA": {
+          "codigo": 1200,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM MATERIAL DE LIMPEZA",
+          "label": "DESPESAS COM MATERIAL DE LIMPEZA — Cód. 1200 (3.1.1.10.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 943,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 943 (3.1.1.10.001)"
+        },
+        "DESPESAS COM MATERIAS DE CONSTRUÇÕES": {
+          "codigo": 1310,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM MATERIAS DE CONSTRUÇÕES",
+          "label": "DESPESAS COM MATERIAS DE CONSTRUÇÕES — Cód. 1310 (3.1.1.10.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1240,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1240 (3.1.1.10.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 948,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 948 (3.1.1.10.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 946,
+          "classificacao": "3.1.1.10.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 946 (3.1.1.10.001)"
+        },
+        "MAO-DE-OBRA DIRETA": {
+          "codigo": 1763,
+          "classificacao": "3.1.1.10.001",
+          "nome": "MAO-DE-OBRA DIRETA",
+          "label": "MAO-DE-OBRA DIRETA — Cód. 1763 (3.1.1.10.001)"
+        },
+        "DESPESA COM CIMENTO": {
+          "codigo": 2103,
+          "classificacao": "3.1.1.10.01",
+          "nome": "DESPESA COM CIMENTO",
+          "label": "DESPESA COM CIMENTO — Cód. 2103 (3.1.1.10.01)"
+        }
+      }
+    },
+    {
+      "codigo": 950,
+      "classificacao": "3.1.1.11",
+      "nome_completo": "AMPLIACAO SEDE CREA PALMAS CNO 90.022.40333/70",
+      "nome_display": "AMPLIACAO SEDE CREA PALMAS",
+      "cno": "90.022.40333/70",
+      "cno_digits": "900224033370",
+      "dropdown_label": "AMPLIACAO SEDE CREA PALMAS — Cód. 950 (3.1.1.11) — CNO 90.022.40333/70",
+      "categorias": {
+        "DESPESA COM MASSAS; ARGAMASSA ...": {
+          "codigo": 2128,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESA COM MASSAS; ARGAMASSA ...",
+          "label": "DESPESA COM MASSAS; ARGAMASSA ... — Cód. 2128 (3.1.1.11.001)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 954,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 954 (3.1.1.11.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 952,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 952 (3.1.1.11.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 951,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 951 (3.1.1.11.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 957,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 957 (3.1.1.11.001)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1203,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1203 (3.1.1.11.001)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 955,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 955 (3.1.1.11.001)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 959,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 959 (3.1.1.11.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 953,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 953 (3.1.1.11.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 1721,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 1721 (3.1.1.11.001)"
+        },
+        "DESPESAS COM PISOS EM GERAL": {
+          "codigo": 1764,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM PISOS EM GERAL",
+          "label": "DESPESAS COM PISOS EM GERAL — Cód. 1764 (3.1.1.11.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1202,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1202 (3.1.1.11.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1241,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1241 (3.1.1.11.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 958,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 958 (3.1.1.11.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 956,
+          "classificacao": "3.1.1.11.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 956 (3.1.1.11.001)"
+        },
+        "SERVIÇOS PRESTADOS POR TERCEIROS": {
+          "codigo": 1309,
+          "classificacao": "3.1.1.11.001",
+          "nome": "SERVIÇOS PRESTADOS POR TERCEIROS",
+          "label": "SERVIÇOS PRESTADOS POR TERCEIROS — Cód. 1309 (3.1.1.11.001)"
+        },
+        "DESPESA COM CIMENTO": {
+          "codigo": 2102,
+          "classificacao": "3.1.1.11.01",
+          "nome": "DESPESA COM CIMENTO",
+          "label": "DESPESA COM CIMENTO — Cód. 2102 (3.1.1.11.01)"
+        },
+        "DESPESA COM INFORMATICA, SEGURANÇA": {
+          "codigo": 2116,
+          "classificacao": "3.1.1.11.01",
+          "nome": "DESPESA COM INFORMATICA, SEGURANÇA",
+          "label": "DESPESA COM INFORMATICA, SEGURANÇA — Cód. 2116 (3.1.1.11.01)"
+        }
+      }
+    },
+    {
+      "codigo": 960,
+      "classificacao": "3.1.1.12",
+      "nome_completo": "CICLOVIA CESAMAR  CNO 90.015.48366/71",
+      "nome_display": "CICLOVIA CESAMAR",
+      "cno": "90.015.48366/71",
+      "cno_digits": "900154836671",
+      "dropdown_label": "CICLOVIA CESAMAR — Cód. 960 (3.1.1.12) — CNO 90.015.48366/71",
+      "categorias": {
+        "ARGAMASSA, MASSAS EM GERAL": {
+          "codigo": 2193,
+          "classificacao": "3.1.1.12.001",
+          "nome": "ARGAMASSA, MASSAS EM GERAL",
+          "label": "ARGAMASSA, MASSAS EM GERAL — Cód. 2193 (3.1.1.12.001)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 964,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 964 (3.1.1.12.001)"
+        },
+        "DESPESAS COM CIMENTO": {
+          "codigo": 961,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM CIMENTO",
+          "label": "DESPESAS COM CIMENTO — Cód. 961 (3.1.1.12.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 962,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 962 (3.1.1.12.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 967,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 967 (3.1.1.12.001)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1205,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1205 (3.1.1.12.001)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 965,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 965 (3.1.1.12.001)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 969,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 969 (3.1.1.12.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 963,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 963 (3.1.1.12.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1204,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1204 (3.1.1.12.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1242,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1242 (3.1.1.12.001)"
+        },
+        "DESPESAS COM TELHAS EM GERAL": {
+          "codigo": 1675,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM TELHAS EM GERAL",
+          "label": "DESPESAS COM TELHAS EM GERAL — Cód. 1675 (3.1.1.12.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 968,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 968 (3.1.1.12.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 966,
+          "classificacao": "3.1.1.12.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 966 (3.1.1.12.001)"
+        },
+        "PRÉ-MOLDADOS E CONCRETOS": {
+          "codigo": 1765,
+          "classificacao": "3.1.1.12.001",
+          "nome": "PRÉ-MOLDADOS E CONCRETOS",
+          "label": "PRÉ-MOLDADOS E CONCRETOS — Cód. 1765 (3.1.1.12.001)"
+        }
+      }
+    },
+    {
+      "codigo": 970,
+      "classificacao": "3.1.1.13",
+      "nome_completo": "CENTRO DE CONVENCOES PARAISO CNO 90.015.47397/74",
+      "nome_display": "CENTRO DE CONVENCOES PARAISO",
+      "cno": "90.015.47397/74",
+      "cno_digits": "900154739774",
+      "dropdown_label": "CENTRO DE CONVENCOES PARAISO — Cód. 970 (3.1.1.13) — CNO 90.015.47397/74",
+      "categorias": {
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 974,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 974 (3.1.1.13.001)"
+        },
+        "DESPESAS COM CIMENTO FERRO CAL ARAME": {
+          "codigo": 972,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM CIMENTO FERRO CAL ARAME",
+          "label": "DESPESAS COM CIMENTO FERRO CAL ARAME — Cód. 972 (3.1.1.13.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 971,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 971 (3.1.1.13.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 978,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 978 (3.1.1.13.001)"
+        },
+        "DESPESAS COM LOCAÇÃO DE EQUIPAMENTOS": {
+          "codigo": 1207,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM LOCAÇÃO DE EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE EQUIPAMENTOS — Cód. 1207 (3.1.1.13.001)"
+        },
+        "DESPESAS COM MADEIRA": {
+          "codigo": 975,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM MADEIRA",
+          "label": "DESPESAS COM MADEIRA — Cód. 975 (3.1.1.13.001)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 979,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 979 (3.1.1.13.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 973,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 973 (3.1.1.13.001)"
+        },
+        "DESPESAS COM PLASTIFICANTE, TECK-BOND, ADESIVOS SEMELHANTES": {
+          "codigo": 1766,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM PLASTIFICANTE, TECK-BOND, ADESIVOS SEMELHANTES",
+          "label": "DESPESAS COM PLASTIFICANTE, TECK-BOND, ADESIVOS SEMELHANTES — Cód. 1766 (3.1.1.13.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1206,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1206 (3.1.1.13.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1243,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1243 (3.1.1.13.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 977,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 977 (3.1.1.13.001)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 976,
+          "classificacao": "3.1.1.13.001",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 976 (3.1.1.13.001)"
+        }
+      }
+    },
+    {
+      "codigo": 980,
+      "classificacao": "3.1.1.14",
+      "nome_completo": "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA CASE CNO 90.018.83297/70",
+      "nome_display": "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA CASE",
+      "cno": "90.018.83297/70",
+      "cno_digits": "900188329770",
+      "dropdown_label": "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA CASE — Cód. 980 (3.1.1.14) — CNO 90.018.83297/70",
+      "categorias": {
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 981,
+          "classificacao": "3.1.1.14.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 981 (3.1.1.14.001)"
+        },
+        "DESPESAS COM PISOS INTERTRAVADOS": {
+          "codigo": 2130,
+          "classificacao": "3.1.1.14.001",
+          "nome": "DESPESAS COM PISOS INTERTRAVADOS",
+          "label": "DESPESAS COM PISOS INTERTRAVADOS — Cód. 2130 (3.1.1.14.001)"
+        },
+        "DESPESA COM MASSAS; ARGAMASSA ...": {
+          "codigo": 2127,
+          "classificacao": "3.1.1.14.002",
+          "nome": "DESPESA COM MASSAS; ARGAMASSA ...",
+          "label": "DESPESA COM MASSAS; ARGAMASSA ... — Cód. 2127 (3.1.1.14.002)"
+        },
+        "DESPESAS COM  CIMENTO": {
+          "codigo": 2111,
+          "classificacao": "3.1.1.14.002",
+          "nome": "DESPESAS COM  CIMENTO",
+          "label": "DESPESAS COM  CIMENTO — Cód. 2111 (3.1.1.14.002)"
+        },
+        "DESPESAS COM  CIMENTO CAL FERRO ARAME": {
+          "codigo": 982,
+          "classificacao": "3.1.1.14.002",
+          "nome": "DESPESAS COM  CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM  CIMENTO CAL FERRO ARAME — Cód. 982 (3.1.1.14.002)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 983,
+          "classificacao": "3.1.1.14.003",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 983 (3.1.1.14.003)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 984,
+          "classificacao": "3.1.1.14.004",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 984 (3.1.1.14.004)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 985,
+          "classificacao": "3.1.1.14.005",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 985 (3.1.1.14.005)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 986,
+          "classificacao": "3.1.1.14.006",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 986 (3.1.1.14.006)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 987,
+          "classificacao": "3.1.1.14.007",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 987 (3.1.1.14.007)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 988,
+          "classificacao": "3.1.1.14.008",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 988 (3.1.1.14.008)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 989,
+          "classificacao": "3.1.1.14.009",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 989 (3.1.1.14.009)"
+        },
+        "DESPESAS COM PLASTIFICATE, ADESIVOS, TECK-BOND": {
+          "codigo": 2101,
+          "classificacao": "3.1.1.14.01",
+          "nome": "DESPESAS COM PLASTIFICATE, ADESIVOS, TECK-BOND",
+          "label": "DESPESAS COM PLASTIFICATE, ADESIVOS, TECK-BOND — Cód. 2101 (3.1.1.14.01)"
+        },
+        "DESPESAS COM MATERIAL DE LIMPEZA": {
+          "codigo": 1208,
+          "classificacao": "3.1.1.14.010",
+          "nome": "DESPESAS COM MATERIAL DE LIMPEZA",
+          "label": "DESPESAS COM MATERIAL DE LIMPEZA — Cód. 1208 (3.1.1.14.010)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1209,
+          "classificacao": "3.1.1.14.011",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1209 (3.1.1.14.011)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1244,
+          "classificacao": "3.1.1.14.012",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1244 (3.1.1.14.012)"
+        },
+        "DESPESAS COM SERVIÇOS DE TERCEIRO": {
+          "codigo": 1645,
+          "classificacao": "3.1.1.14.013",
+          "nome": "DESPESAS COM SERVIÇOS DE TERCEIRO",
+          "label": "DESPESAS COM SERVIÇOS DE TERCEIRO — Cód. 1645 (3.1.1.14.013)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 1649,
+          "classificacao": "3.1.1.14.014",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 1649 (3.1.1.14.014)"
+        },
+        "DESPESAS COM TELHAS": {
+          "codigo": 1654,
+          "classificacao": "3.1.1.14.015",
+          "nome": "DESPESAS COM TELHAS",
+          "label": "DESPESAS COM TELHAS — Cód. 1654 (3.1.1.14.015)"
+        },
+        "DESPESAS COM ALIMENTACAO": {
+          "codigo": 1674,
+          "classificacao": "3.1.1.14.016",
+          "nome": "DESPESAS COM ALIMENTACAO",
+          "label": "DESPESAS COM ALIMENTACAO — Cód. 1674 (3.1.1.14.016)"
+        },
+        "DESPESAS COM PISOS EM GERAL": {
+          "codigo": 1670,
+          "classificacao": "3.1.1.14.016",
+          "nome": "DESPESAS COM PISOS EM GERAL",
+          "label": "DESPESAS COM PISOS EM GERAL — Cód. 1670 (3.1.1.14.016)"
+        },
+        "PRÉ MOLDADOS E CONCRETOS": {
+          "codigo": 1767,
+          "classificacao": "3.1.1.14.017",
+          "nome": "PRÉ MOLDADOS E CONCRETOS",
+          "label": "PRÉ MOLDADOS E CONCRETOS — Cód. 1767 (3.1.1.14.017)"
+        }
+      }
+    },
+    {
+      "codigo": 990,
+      "classificacao": "3.1.1.15",
+      "nome_completo": "MATERIAL APLICADO NA OBRA PRACA ARNE 64",
+      "nome_display": "MATERIAL APLICADO NA OBRA PRACA ARNE 64",
+      "cno": null,
+      "cno_digits": "",
+      "dropdown_label": "MATERIAL APLICADO NA OBRA PRACA ARNE 64 — Cód. 990 (3.1.1.15)",
+      "categorias": {
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 991,
+          "classificacao": "3.1.1.15.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 991 (3.1.1.15.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 992,
+          "classificacao": "3.1.1.15.002",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 992 (3.1.1.15.002)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 993,
+          "classificacao": "3.1.1.15.003",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 993 (3.1.1.15.003)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 994,
+          "classificacao": "3.1.1.15.004",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 994 (3.1.1.15.004)"
+        },
+        "DESPESAS COM MADEIRA": {
+          "codigo": 995,
+          "classificacao": "3.1.1.15.005",
+          "nome": "DESPESAS COM MADEIRA",
+          "label": "DESPESAS COM MADEIRA — Cód. 995 (3.1.1.15.005)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 997,
+          "classificacao": "3.1.1.15.006",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 997 (3.1.1.15.006)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 996,
+          "classificacao": "3.1.1.15.006",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 996 (3.1.1.15.006)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 998,
+          "classificacao": "3.1.1.15.008",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 998 (3.1.1.15.008)"
+        },
+        "DESPESAS COM FRETES E CARRETOS": {
+          "codigo": 999,
+          "classificacao": "3.1.1.15.009",
+          "nome": "DESPESAS COM FRETES E CARRETOS",
+          "label": "DESPESAS COM FRETES E CARRETOS — Cód. 999 (3.1.1.15.009)"
+        },
+        "DESPESAS COM MATERIAL DE LIMPEZA": {
+          "codigo": 1210,
+          "classificacao": "3.1.1.15.010",
+          "nome": "DESPESAS COM MATERIAL DE LIMPEZA",
+          "label": "DESPESAS COM MATERIAL DE LIMPEZA — Cód. 1210 (3.1.1.15.010)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1211,
+          "classificacao": "3.1.1.15.011",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1211 (3.1.1.15.011)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1245,
+          "classificacao": "3.1.1.15.012",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1245 (3.1.1.15.012)"
+        }
+      }
+    },
+    {
+      "codigo": 1000,
+      "classificacao": "3.1.1.16",
+      "nome_completo": "MATERIAL APLICADO NA OBRA PRACA SETOR SUL",
+      "nome_display": "MATERIAL APLICADO NA OBRA PRACA SETOR SUL",
+      "cno": null,
+      "cno_digits": "",
+      "dropdown_label": "MATERIAL APLICADO NA OBRA PRACA SETOR SUL — Cód. 1000 (3.1.1.16)",
+      "categorias": {
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 1001,
+          "classificacao": "3.1.1.16.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 1001 (3.1.1.16.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 1002,
+          "classificacao": "3.1.1.16.002",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 1002 (3.1.1.16.002)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 1003,
+          "classificacao": "3.1.1.16.003",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 1003 (3.1.1.16.003)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 1004,
+          "classificacao": "3.1.1.16.004",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 1004 (3.1.1.16.004)"
+        },
+        "DESPESAS COM MADEIRA": {
+          "codigo": 1005,
+          "classificacao": "3.1.1.16.005",
+          "nome": "DESPESAS COM MADEIRA",
+          "label": "DESPESAS COM MADEIRA — Cód. 1005 (3.1.1.16.005)"
+        },
+        "DESPESAS COM TINTAS E VERNIZACAO": {
+          "codigo": 1006,
+          "classificacao": "3.1.1.16.006",
+          "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+          "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 1006 (3.1.1.16.006)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 1007,
+          "classificacao": "3.1.1.16.007",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 1007 (3.1.1.16.007)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 1008,
+          "classificacao": "3.1.1.16.008",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 1008 (3.1.1.16.008)"
+        },
+        "DESPESAS COM FRETES E CARRETOS": {
+          "codigo": 1009,
+          "classificacao": "3.1.1.16.009",
+          "nome": "DESPESAS COM FRETES E CARRETOS",
+          "label": "DESPESAS COM FRETES E CARRETOS — Cód. 1009 (3.1.1.16.009)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1212,
+          "classificacao": "3.1.1.16.010",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1212 (3.1.1.16.010)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1213,
+          "classificacao": "3.1.1.16.011",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1213 (3.1.1.16.011)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1246,
+          "classificacao": "3.1.1.16.012",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1246 (3.1.1.16.012)"
+        }
+      }
+    },
+    {
+      "codigo": 1158,
+      "classificacao": "3.1.1.17",
+      "nome_completo": "MATERIAL APLICADO NA OBRA ETI PARAISO",
+      "nome_display": "MATERIAL APLICADO NA OBRA ETI PARAISO",
+      "cno": null,
+      "cno_digits": "",
+      "dropdown_label": "MATERIAL APLICADO NA OBRA ETI PARAISO — Cód. 1158 (3.1.1.17)",
+      "categorias": {
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 1159,
+          "classificacao": "3.1.1.17.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 1159 (3.1.1.17.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 1160,
+          "classificacao": "3.1.1.17.002",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 1160 (3.1.1.17.002)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 1161,
+          "classificacao": "3.1.1.17.003",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 1161 (3.1.1.17.003)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 1162,
+          "classificacao": "3.1.1.17.004",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 1162 (3.1.1.17.004)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 1163,
+          "classificacao": "3.1.1.17.005",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 1163 (3.1.1.17.005)"
+        },
+        "DESPESAS COM TINTAS E VERNIZAÇÃO": {
+          "codigo": 1164,
+          "classificacao": "3.1.1.17.006",
+          "nome": "DESPESAS COM TINTAS E VERNIZAÇÃO",
+          "label": "DESPESAS COM TINTAS E VERNIZAÇÃO — Cód. 1164 (3.1.1.17.006)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 1165,
+          "classificacao": "3.1.1.17.007",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 1165 (3.1.1.17.007)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 1166,
+          "classificacao": "3.1.1.17.008",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 1166 (3.1.1.17.008)"
+        },
+        "DESPESAS COM FRETES E CARRETOS": {
+          "codigo": 1167,
+          "classificacao": "3.1.1.17.009",
+          "nome": "DESPESAS COM FRETES E CARRETOS",
+          "label": "DESPESAS COM FRETES E CARRETOS — Cód. 1167 (3.1.1.17.009)"
+        },
+        "DESPESAS COM MATERIAL DE LIMPEZA": {
+          "codigo": 1168,
+          "classificacao": "3.1.1.17.010",
+          "nome": "DESPESAS COM MATERIAL DE LIMPEZA",
+          "label": "DESPESAS COM MATERIAL DE LIMPEZA — Cód. 1168 (3.1.1.17.010)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1214,
+          "classificacao": "3.1.1.17.011",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1214 (3.1.1.17.011)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1247,
+          "classificacao": "3.1.1.17.012",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1247 (3.1.1.17.012)"
+        }
+      }
+    },
+    {
+      "codigo": 1248,
+      "classificacao": "3.1.1.18",
+      "nome_completo": "MATERIAL APLICADO NA OBRA CARIBE",
+      "nome_display": "MATERIAL APLICADO NA OBRA CARIBE",
+      "cno": null,
+      "cno_digits": "",
+      "dropdown_label": "MATERIAL APLICADO NA OBRA CARIBE — Cód. 1248 (3.1.1.18)",
+      "categorias": {
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 1249,
+          "classificacao": "3.1.1.18.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 1249 (3.1.1.18.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO ARAME": {
+          "codigo": 1250,
+          "classificacao": "3.1.1.18.002",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO ARAME — Cód. 1250 (3.1.1.18.002)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 1251,
+          "classificacao": "3.1.1.18.003",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 1251 (3.1.1.18.003)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 1252,
+          "classificacao": "3.1.1.18.004",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 1252 (3.1.1.18.004)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 1253,
+          "classificacao": "3.1.1.18.005",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 1253 (3.1.1.18.005)"
+        },
+        "DESPESAS COM TINTAS E VERNIZAÇÃO": {
+          "codigo": 1254,
+          "classificacao": "3.1.1.18.006",
+          "nome": "DESPESAS COM TINTAS E VERNIZAÇÃO",
+          "label": "DESPESAS COM TINTAS E VERNIZAÇÃO — Cód. 1254 (3.1.1.18.006)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 1255,
+          "classificacao": "3.1.1.18.007",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 1255 (3.1.1.18.007)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 1256,
+          "classificacao": "3.1.1.18.008",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 1256 (3.1.1.18.008)"
+        },
+        "DESPESAS COM FRETES E CARRETOS": {
+          "codigo": 1257,
+          "classificacao": "3.1.1.18.009",
+          "nome": "DESPESAS COM FRETES E CARRETOS",
+          "label": "DESPESAS COM FRETES E CARRETOS — Cód. 1257 (3.1.1.18.009)"
+        },
+        "DESPESAS COM MATERIAL DE LIMPEZA": {
+          "codigo": 1258,
+          "classificacao": "3.1.1.18.010",
+          "nome": "DESPESAS COM MATERIAL DE LIMPEZA",
+          "label": "DESPESAS COM MATERIAL DE LIMPEZA — Cód. 1258 (3.1.1.18.010)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1259,
+          "classificacao": "3.1.1.18.011",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1259 (3.1.1.18.011)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1260,
+          "classificacao": "3.1.1.18.012",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1260 (3.1.1.18.012)"
+        }
+      }
+    },
+    {
+      "codigo": 1261,
+      "classificacao": "3.1.1.19",
+      "nome_completo": "MATERIAL APLICADO NA OBRA ALVORADA",
+      "nome_display": "MATERIAL APLICADO NA OBRA ALVORADA",
+      "cno": null,
+      "cno_digits": "",
+      "dropdown_label": "MATERIAL APLICADO NA OBRA ALVORADA — Cód. 1261 (3.1.1.19)",
+      "categorias": {
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 1262,
+          "classificacao": "3.1.1.19.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 1262 (3.1.1.19.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO E ARAME": {
+          "codigo": 1263,
+          "classificacao": "3.1.1.19.002",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO E ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO E ARAME — Cód. 1263 (3.1.1.19.002)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 1264,
+          "classificacao": "3.1.1.19.003",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 1264 (3.1.1.19.003)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 1265,
+          "classificacao": "3.1.1.19.004",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 1265 (3.1.1.19.004)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 1266,
+          "classificacao": "3.1.1.19.005",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 1266 (3.1.1.19.005)"
+        },
+        "DESPESAS COM TINTAS E VERNIZAÇÃO": {
+          "codigo": 1267,
+          "classificacao": "3.1.1.19.006",
+          "nome": "DESPESAS COM TINTAS E VERNIZAÇÃO",
+          "label": "DESPESAS COM TINTAS E VERNIZAÇÃO — Cód. 1267 (3.1.1.19.006)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 1268,
+          "classificacao": "3.1.1.19.007",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 1268 (3.1.1.19.007)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 1269,
+          "classificacao": "3.1.1.19.008",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 1269 (3.1.1.19.008)"
+        },
+        "DESPESAS COM FRETES E CARRETOS": {
+          "codigo": 1271,
+          "classificacao": "3.1.1.19.009",
+          "nome": "DESPESAS COM FRETES E CARRETOS",
+          "label": "DESPESAS COM FRETES E CARRETOS — Cód. 1271 (3.1.1.19.009)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1272,
+          "classificacao": "3.1.1.19.010",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1272 (3.1.1.19.010)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1273,
+          "classificacao": "3.1.1.19.011",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1273 (3.1.1.19.011)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1274,
+          "classificacao": "3.1.1.19.012",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1274 (3.1.1.19.012)"
+        }
+      }
+    },
+    {
+      "codigo": 1275,
+      "classificacao": "3.1.1.20",
+      "nome_completo": "MATERIAL APLICADO NA OBRA PEDRO AFONSO",
+      "nome_display": "MATERIAL APLICADO NA OBRA PEDRO AFONSO",
+      "cno": null,
+      "cno_digits": "",
+      "dropdown_label": "MATERIAL APLICADO NA OBRA PEDRO AFONSO — Cód. 1275 (3.1.1.20)",
+      "categorias": {
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+          "codigo": 1276,
+          "classificacao": "3.1.1.20.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 1276 (3.1.1.20.001)"
+        },
+        "DESPESAS COM CIMENTO CAL FERRO E ARAME": {
+          "codigo": 1277,
+          "classificacao": "3.1.1.20.002",
+          "nome": "DESPESAS COM CIMENTO CAL FERRO E ARAME",
+          "label": "DESPESAS COM CIMENTO CAL FERRO E ARAME — Cód. 1277 (3.1.1.20.002)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 1278,
+          "classificacao": "3.1.1.20.003",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 1278 (3.1.1.20.003)"
+        },
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 1279,
+          "classificacao": "3.1.1.20.004",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 1279 (3.1.1.20.004)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 1280,
+          "classificacao": "3.1.1.20.005",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 1280 (3.1.1.20.005)"
+        },
+        "DESPESAS COM TINTAS E VERNIZAÇÃO": {
+          "codigo": 1281,
+          "classificacao": "3.1.1.20.006",
+          "nome": "DESPESAS COM TINTAS E VERNIZAÇÃO",
+          "label": "DESPESAS COM TINTAS E VERNIZAÇÃO — Cód. 1281 (3.1.1.20.006)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 1282,
+          "classificacao": "3.1.1.20.007",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 1282 (3.1.1.20.007)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 1283,
+          "classificacao": "3.1.1.20.008",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 1283 (3.1.1.20.008)"
+        },
+        "DESPESAS COM FRETES E CARRETOS": {
+          "codigo": 1284,
+          "classificacao": "3.1.1.20.009",
+          "nome": "DESPESAS COM FRETES E CARRETOS",
+          "label": "DESPESAS COM FRETES E CARRETOS — Cód. 1284 (3.1.1.20.009)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1285,
+          "classificacao": "3.1.1.20.010",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1285 (3.1.1.20.010)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 1286,
+          "classificacao": "3.1.1.20.011",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1286 (3.1.1.20.011)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1287,
+          "classificacao": "3.1.1.20.012",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1287 (3.1.1.20.012)"
+        }
+      }
+    },
+    {
+      "codigo": 1978,
+      "classificacao": "3.1.1.21",
+      "nome_completo": "GUARITA SENAI CT GURUPI CNO 90.024.90637/78",
+      "nome_display": "GUARITA SENAI CT GURUPI",
+      "cno": "90.024.90637/78",
+      "cno_digits": "900249063778",
+      "dropdown_label": "GUARITA SENAI CT GURUPI — Cód. 1978 (3.1.1.21) — CNO 90.024.90637/78",
+      "categorias": {
+        "DESPESAS COM ALIMENTAÇÃO": {
+          "codigo": 1993,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM ALIMENTAÇÃO",
+          "label": "DESPESAS COM ALIMENTAÇÃO — Cód. 1993 (3.1.1.21.001)"
+        },
+        "DESPESAS COM AREIA, BRITO, SEIXO": {
+          "codigo": 1982,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM AREIA, BRITO, SEIXO",
+          "label": "DESPESAS COM AREIA, BRITO, SEIXO — Cód. 1982 (3.1.1.21.001)"
+        },
+        "DESPESAS COM CIMENTO": {
+          "codigo": 1979,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM CIMENTO",
+          "label": "DESPESAS COM CIMENTO — Cód. 1979 (3.1.1.21.001)"
+        },
+        "DESPESAS COM DIVISÓRIAS": {
+          "codigo": 1989,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM DIVISÓRIAS",
+          "label": "DESPESAS COM DIVISÓRIAS — Cód. 1989 (3.1.1.21.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 1985,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 1985 (3.1.1.21.001)"
+        },
+        "DESPESAS COM FERRO, ARAME": {
+          "codigo": 1980,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM FERRO, ARAME",
+          "label": "DESPESAS COM FERRO, ARAME — Cód. 1980 (3.1.1.21.001)"
+        },
+        "DESPESAS COM ITENS DIVERSOS": {
+          "codigo": 1987,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM ITENS DIVERSOS",
+          "label": "DESPESAS COM ITENS DIVERSOS — Cód. 1987 (3.1.1.21.001)"
+        },
+        "DESPESAS COM MADEIRA": {
+          "codigo": 1983,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM MADEIRA",
+          "label": "DESPESAS COM MADEIRA — Cód. 1983 (3.1.1.21.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 1981,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 1981 (3.1.1.21.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICOS": {
+          "codigo": 1991,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICOS",
+          "label": "DESPESAS COM MATERIAL HIDRAULICOS — Cód. 1991 (3.1.1.21.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 1988,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1988 (3.1.1.21.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 1990,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1990 (3.1.1.21.001)"
+        },
+        "DESPESAS COM TELHAS EM GERAL": {
+          "codigo": 1992,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM TELHAS EM GERAL",
+          "label": "DESPESAS COM TELHAS EM GERAL — Cód. 1992 (3.1.1.21.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 1986,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 1986 (3.1.1.21.001)"
+        },
+        "DESPESAS COM TINTAS, VERNIZAÇÃO, IMPERMEABILIZANTE": {
+          "codigo": 1984,
+          "classificacao": "3.1.1.21.001",
+          "nome": "DESPESAS COM TINTAS, VERNIZAÇÃO, IMPERMEABILIZANTE",
+          "label": "DESPESAS COM TINTAS, VERNIZAÇÃO, IMPERMEABILIZANTE — Cód. 1984 (3.1.1.21.001)"
+        }
+      }
+    },
+    {
+      "codigo": 2010,
+      "classificacao": "3.1.1.22",
+      "nome_completo": "REFORMA MIRACEMA VILMAR VASCONCELOS CNO 90.027.11818/73",
+      "nome_display": "REFORMA MIRACEMA VILMAR VASCONCELOS",
+      "cno": "90.027.11818/73",
+      "cno_digits": "900271181873",
+      "dropdown_label": "REFORMA MIRACEMA VILMAR VASCONCELOS — Cód. 2010 (3.1.1.22) — CNO 90.027.11818/73",
+      "categorias": {
+        "DESPESAS COM ALIMENTAÇÃO": {
+          "codigo": 2030,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM ALIMENTAÇÃO",
+          "label": "DESPESAS COM ALIMENTAÇÃO — Cód. 2030 (3.1.1.22.001)"
+        },
+        "DESPESAS COM AREIA, SEIXO, BRITA": {
+          "codigo": 2014,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM AREIA, SEIXO, BRITA",
+          "label": "DESPESAS COM AREIA, SEIXO, BRITA — Cód. 2014 (3.1.1.22.001)"
+        },
+        "DESPESAS COM ARGAMASSA, MASSAS": {
+          "codigo": 2027,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM ARGAMASSA, MASSAS",
+          "label": "DESPESAS COM ARGAMASSA, MASSAS — Cód. 2027 (3.1.1.22.001)"
+        },
+        "DESPESAS COM CIMENTO": {
+          "codigo": 2012,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM CIMENTO",
+          "label": "DESPESAS COM CIMENTO — Cód. 2012 (3.1.1.22.001)"
+        },
+        "DESPESAS COM COMBUSTIVEIS E LUBRIFICATES": {
+          "codigo": 2011,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICATES",
+          "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICATES — Cód. 2011 (3.1.1.22.001)"
+        },
+        "DESPESAS COM DIVISORIAS, FORROS, DY-WALL": {
+          "codigo": 2020,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM DIVISORIAS, FORROS, DY-WALL",
+          "label": "DESPESAS COM DIVISORIAS, FORROS, DY-WALL — Cód. 2020 (3.1.1.22.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 2017,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 2017 (3.1.1.22.001)"
+        },
+        "DESPESAS COM FERROS, ARAMES, ALUMINIO": {
+          "codigo": 2026,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM FERROS, ARAMES, ALUMINIO",
+          "label": "DESPESAS COM FERROS, ARAMES, ALUMINIO — Cód. 2026 (3.1.1.22.001)"
+        },
+        "DESPESAS COM INFORMATICA E SEGURANÇA": {
+          "codigo": 2019,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM INFORMATICA E SEGURANÇA",
+          "label": "DESPESAS COM INFORMATICA E SEGURANÇA — Cód. 2019 (3.1.1.22.001)"
+        },
+        "DESPESAS COM ITENS DIVERSOS": {
+          "codigo": 2034,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM ITENS DIVERSOS",
+          "label": "DESPESAS COM ITENS DIVERSOS — Cód. 2034 (3.1.1.22.001)"
+        },
+        "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+          "codigo": 2028,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+          "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 2028 (3.1.1.22.001)"
+        },
+        "DESPESAS COM MADEIRA": {
+          "codigo": 2015,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM MADEIRA",
+          "label": "DESPESAS COM MADEIRA — Cód. 2015 (3.1.1.22.001)"
+        },
+        "DESPESAS COM MATERIAL DE ESCRITORIO": {
+          "codigo": 2023,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM MATERIAL DE ESCRITORIO",
+          "label": "DESPESAS COM MATERIAL DE ESCRITORIO — Cód. 2023 (3.1.1.22.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 2013,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 2013 (3.1.1.22.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICOS": {
+          "codigo": 2033,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICOS",
+          "label": "DESPESAS COM MATERIAL HIDRAULICOS — Cód. 2033 (3.1.1.22.001)"
+        },
+        "DESPESAS COM PISOS INTERTRAVADOS": {
+          "codigo": 2022,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM PISOS INTERTRAVADOS",
+          "label": "DESPESAS COM PISOS INTERTRAVADOS — Cód. 2022 (3.1.1.22.001)"
+        },
+        "DESPESAS COM PISOS, CERAMICAS": {
+          "codigo": 2032,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM PISOS, CERAMICAS",
+          "label": "DESPESAS COM PISOS, CERAMICAS — Cód. 2032 (3.1.1.22.001)"
+        },
+        "DESPESAS COM PLASTIFICANTE, ADESIVOS, TECK-BOND": {
+          "codigo": 2024,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM PLASTIFICANTE, ADESIVOS, TECK-BOND",
+          "label": "DESPESAS COM PLASTIFICANTE, ADESIVOS, TECK-BOND — Cód. 2024 (3.1.1.22.001)"
+        },
+        "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS": {
+          "codigo": 2021,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS",
+          "label": "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS — Cód. 2021 (3.1.1.22.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 2031,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 2031 (3.1.1.22.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 2029,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 2029 (3.1.1.22.001)"
+        },
+        "DESPESAS COM TELHAS EM GERAL": {
+          "codigo": 2035,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM TELHAS EM GERAL",
+          "label": "DESPESAS COM TELHAS EM GERAL — Cód. 2035 (3.1.1.22.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 2025,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 2025 (3.1.1.22.001)"
+        },
+        "DESPESAS COM TINTAS, VERNIZAÇÃO E IMPERMEABILIZANTES": {
+          "codigo": 2016,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM TINTAS, VERNIZAÇÃO E IMPERMEABILIZANTES",
+          "label": "DESPESAS COM TINTAS, VERNIZAÇÃO E IMPERMEABILIZANTES — Cód. 2016 (3.1.1.22.001)"
+        },
+        "DESPESAS COM VIDROS": {
+          "codigo": 2018,
+          "classificacao": "3.1.1.22.001",
+          "nome": "DESPESAS COM VIDROS",
+          "label": "DESPESAS COM VIDROS — Cód. 2018 (3.1.1.22.001)"
+        }
+      }
+    },
+    {
+      "codigo": 2131,
+      "classificacao": "3.1.1.23",
+      "nome_completo": "COMPLEXO PRISIONAL SERRA DO CARMO CNO 90.027.65740/76",
+      "nome_display": "COMPLEXO PRISIONAL SERRA DO CARMO",
+      "cno": "90.027.65740/76",
+      "cno_digits": "900276574076",
+      "dropdown_label": "COMPLEXO PRISIONAL SERRA DO CARMO — Cód. 2131 (3.1.1.23) — CNO 90.027.65740/76",
+      "categorias": {
+        "DESPESAS COM AREIA BRITA E SEIXO": {
+          "codigo": 2133,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+          "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 2133 (3.1.1.23.001)"
+        },
+        "DESPESAS COM CIMENTO": {
+          "codigo": 2144,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM CIMENTO",
+          "label": "DESPESAS COM CIMENTO — Cód. 2144 (3.1.1.23.001)"
+        },
+        "DESPESAS COM DIVISORIAS, FORROS, DRY-WALL": {
+          "codigo": 2135,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM DIVISORIAS, FORROS, DRY-WALL",
+          "label": "DESPESAS COM DIVISORIAS, FORROS, DRY-WALL — Cód. 2135 (3.1.1.23.001)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 2136,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 2136 (3.1.1.23.001)"
+        },
+        "DESPESAS COM FERRO, FERRAGENS, ARAME, ALUMINIO": {
+          "codigo": 2134,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM FERRO, FERRAGENS, ARAME, ALUMINIO",
+          "label": "DESPESAS COM FERRO, FERRAGENS, ARAME, ALUMINIO — Cód. 2134 (3.1.1.23.001)"
+        },
+        "DESPESAS COM INFORMATICA, SEGURANÇA": {
+          "codigo": 2152,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM INFORMATICA, SEGURANÇA",
+          "label": "DESPESAS COM INFORMATICA, SEGURANÇA — Cód. 2152 (3.1.1.23.001)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 2137,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 2137 (3.1.1.23.001)"
+        },
+        "DESPESAS COM MASSAS, ARGAMASSAS...": {
+          "codigo": 2150,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM MASSAS, ARGAMASSAS...",
+          "label": "DESPESAS COM MASSAS, ARGAMASSAS... — Cód. 2150 (3.1.1.23.001)"
+        },
+        "DESPESAS COM MATERIAL DIVERSOS": {
+          "codigo": 2138,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM MATERIAL DIVERSOS",
+          "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 2138 (3.1.1.23.001)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 2139,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 2139 (3.1.1.23.001)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 2140,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 2140 (3.1.1.23.001)"
+        },
+        "DESPESAS COM PISOS INTERTRAVADOS": {
+          "codigo": 2146,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM PISOS INTERTRAVADOS",
+          "label": "DESPESAS COM PISOS INTERTRAVADOS — Cód. 2146 (3.1.1.23.001)"
+        },
+        "DESPESAS COM PISOS, CERAMICAS": {
+          "codigo": 2147,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM PISOS, CERAMICAS",
+          "label": "DESPESAS COM PISOS, CERAMICAS — Cód. 2147 (3.1.1.23.001)"
+        },
+        "DESPESAS COM PLASTIFICANTE, ADESIVOS, TECK-BOND": {
+          "codigo": 2151,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM PLASTIFICANTE, ADESIVOS, TECK-BOND",
+          "label": "DESPESAS COM PLASTIFICANTE, ADESIVOS, TECK-BOND — Cód. 2151 (3.1.1.23.001)"
+        },
+        "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS": {
+          "codigo": 2141,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS",
+          "label": "DESPESAS COM PRÉ-MOLDADOS, CONCRETOS — Cód. 2141 (3.1.1.23.001)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 2142,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 2142 (3.1.1.23.001)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 2143,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 2143 (3.1.1.23.001)"
+        },
+        "DESPESAS COM TELHAS EM GERAL": {
+          "codigo": 2145,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM TELHAS EM GERAL",
+          "label": "DESPESAS COM TELHAS EM GERAL — Cód. 2145 (3.1.1.23.001)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 2132,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 2132 (3.1.1.23.001)"
+        },
+        "DESPESAS COM TINTAS, IMPERMEABILIZANTES, VENIZ": {
+          "codigo": 2149,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM TINTAS, IMPERMEABILIZANTES, VENIZ",
+          "label": "DESPESAS COM TINTAS, IMPERMEABILIZANTES, VENIZ — Cód. 2149 (3.1.1.23.001)"
+        },
+        "DESPESAS COM VIDROS E ACESSORIOS": {
+          "codigo": 2148,
+          "classificacao": "3.1.1.23.001",
+          "nome": "DESPESAS COM VIDROS E ACESSORIOS",
+          "label": "DESPESAS COM VIDROS E ACESSORIOS — Cód. 2148 (3.1.1.23.001)"
+        }
+      }
+    },
+    {
+      "codigo": 2248,
+      "classificacao": "3.1.1.24",
+      "nome_completo": "REFORMA PRAÇA ARNE 12 / 90.028.93866/77",
+      "nome_display": "REFORMA PRAÇA ARNE 12",
+      "cno": "90.028.93866/77",
+      "cno_digits": "900289386677",
+      "dropdown_label": "REFORMA PRAÇA ARNE 12 — Cód. 2248 (3.1.1.24) — CNO 90.028.93866/77",
+      "categorias": {
+        "DESPESA COM AREIA, BRITA, SEIXO...": {
+          "codigo": 2249,
+          "classificacao": "3.1.1.24.001",
+          "nome": "DESPESA COM AREIA, BRITA, SEIXO...",
+          "label": "DESPESA COM AREIA, BRITA, SEIXO... — Cód. 2249 (3.1.1.24.001)"
+        },
+        "DESPESAS COM CIMENTO": {
+          "codigo": 2250,
+          "classificacao": "3.1.1.24.002",
+          "nome": "DESPESAS COM CIMENTO",
+          "label": "DESPESAS COM CIMENTO — Cód. 2250 (3.1.1.24.002)"
+        },
+        "DESPESAS COM DIVISORIAS, FORROS, DRY-WALL.": {
+          "codigo": 2251,
+          "classificacao": "3.1.1.24.003",
+          "nome": "DESPESAS COM DIVISORIAS, FORROS, DRY-WALL.",
+          "label": "DESPESAS COM DIVISORIAS, FORROS, DRY-WALL. — Cód. 2251 (3.1.1.24.003)"
+        },
+        "DESPESAS COM FERRAMENTAS": {
+          "codigo": 2252,
+          "classificacao": "3.1.1.24.004",
+          "nome": "DESPESAS COM FERRAMENTAS",
+          "label": "DESPESAS COM FERRAMENTAS — Cód. 2252 (3.1.1.24.004)"
+        },
+        "DESPESAS COM FERRO, FERRAGENS, ARAME ETC..": {
+          "codigo": 2253,
+          "classificacao": "3.1.1.24.005",
+          "nome": "DESPESAS COM FERRO, FERRAGENS, ARAME ETC..",
+          "label": "DESPESAS COM FERRO, FERRAGENS, ARAME ETC.. — Cód. 2253 (3.1.1.24.005)"
+        },
+        "DESPESAS COM INFORMATICA, SEGURANÇA...": {
+          "codigo": 2254,
+          "classificacao": "3.1.1.24.006",
+          "nome": "DESPESAS COM INFORMATICA, SEGURANÇA...",
+          "label": "DESPESAS COM INFORMATICA, SEGURANÇA... — Cód. 2254 (3.1.1.24.006)"
+        },
+        "DESPESAS COM MADEIRAS": {
+          "codigo": 2255,
+          "classificacao": "3.1.1.24.007",
+          "nome": "DESPESAS COM MADEIRAS",
+          "label": "DESPESAS COM MADEIRAS — Cód. 2255 (3.1.1.24.007)"
+        },
+        "DESPESAS COM EQUIPAMENTO DE SEGURANÇA": {
+          "codigo": 2256,
+          "classificacao": "3.1.1.24.008",
+          "nome": "DESPESAS COM EQUIPAMENTO DE SEGURANÇA",
+          "label": "DESPESAS COM EQUIPAMENTO DE SEGURANÇA — Cód. 2256 (3.1.1.24.008)"
+        },
+        "DESPESAS COM MASSAS, ARGAMASSA...": {
+          "codigo": 2257,
+          "classificacao": "3.1.1.24.009",
+          "nome": "DESPESAS COM MASSAS, ARGAMASSA...",
+          "label": "DESPESAS COM MASSAS, ARGAMASSA... — Cód. 2257 (3.1.1.24.009)"
+        },
+        "DESPESAS COM MATERIAIS DIVERSOS": {
+          "codigo": 2258,
+          "classificacao": "3.1.1.24.010",
+          "nome": "DESPESAS COM MATERIAIS DIVERSOS",
+          "label": "DESPESAS COM MATERIAIS DIVERSOS — Cód. 2258 (3.1.1.24.010)"
+        },
+        "DESPESAS COM MATERIAL ELETRICO": {
+          "codigo": 2259,
+          "classificacao": "3.1.1.24.011",
+          "nome": "DESPESAS COM MATERIAL ELETRICO",
+          "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 2259 (3.1.1.24.011)"
+        },
+        "DESPESAS COM MATERIAL HIDRAULICO": {
+          "codigo": 2260,
+          "classificacao": "3.1.1.24.012",
+          "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+          "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 2260 (3.1.1.24.012)"
+        },
+        "DESPESA COM PISOS INTERTRAVADOS": {
+          "codigo": 2261,
+          "classificacao": "3.1.1.24.013",
+          "nome": "DESPESA COM PISOS INTERTRAVADOS",
+          "label": "DESPESA COM PISOS INTERTRAVADOS — Cód. 2261 (3.1.1.24.013)"
+        },
+        "DESPESAS COM PISOS, CERAMICA, MARMORE": {
+          "codigo": 2262,
+          "classificacao": "3.1.1.24.014",
+          "nome": "DESPESAS COM PISOS, CERAMICA, MARMORE",
+          "label": "DESPESAS COM PISOS, CERAMICA, MARMORE — Cód. 2262 (3.1.1.24.014)"
+        },
+        "DESPESAS COM PLASTIFICANTE, ADESIVOS, TECK-BOND": {
+          "codigo": 2263,
+          "classificacao": "3.1.1.24.015",
+          "nome": "DESPESAS COM PLASTIFICANTE, ADESIVOS, TECK-BOND",
+          "label": "DESPESAS COM PLASTIFICANTE, ADESIVOS, TECK-BOND — Cód. 2263 (3.1.1.24.015)"
+        },
+        "DESPESAS COM CONCRETOS, PRÉ-MOLDADOS...": {
+          "codigo": 2264,
+          "classificacao": "3.1.1.24.016",
+          "nome": "DESPESAS COM CONCRETOS, PRÉ-MOLDADOS...",
+          "label": "DESPESAS COM CONCRETOS, PRÉ-MOLDADOS... — Cód. 2264 (3.1.1.24.016)"
+        },
+        "DESPESAS COM PRODUTOS DE LIMPEZA": {
+          "codigo": 2265,
+          "classificacao": "3.1.1.24.017",
+          "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+          "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 2265 (3.1.1.24.017)"
+        },
+        "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+          "codigo": 2266,
+          "classificacao": "3.1.1.24.018",
+          "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+          "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 2266 (3.1.1.24.018)"
+        },
+        "DESPESA COM TELHAS EM GERAL": {
+          "codigo": 2267,
+          "classificacao": "3.1.1.24.019",
+          "nome": "DESPESA COM TELHAS EM GERAL",
+          "label": "DESPESA COM TELHAS EM GERAL — Cód. 2267 (3.1.1.24.019)"
+        },
+        "DESPESAS COM TIJOLOS": {
+          "codigo": 2268,
+          "classificacao": "3.1.1.24.020",
+          "nome": "DESPESAS COM TIJOLOS",
+          "label": "DESPESAS COM TIJOLOS — Cód. 2268 (3.1.1.24.020)"
+        },
+        "DESPESAS COM TINTAS, IMPERMEABILIZANTE, VERNIZ...": {
+          "codigo": 2269,
+          "classificacao": "3.1.1.24.021",
+          "nome": "DESPESAS COM TINTAS, IMPERMEABILIZANTE, VERNIZ...",
+          "label": "DESPESAS COM TINTAS, IMPERMEABILIZANTE, VERNIZ... — Cód. 2269 (3.1.1.24.021)"
+        },
+        "DEPESAS COM VIDROS E ACESSÓRIOS.": {
+          "codigo": 2270,
+          "classificacao": "3.1.1.24.022",
+          "nome": "DEPESAS COM VIDROS E ACESSÓRIOS.",
+          "label": "DEPESAS COM VIDROS E ACESSÓRIOS. — Cód. 2270 (3.1.1.24.022)"
+        }
+      }
+    }
+  ],
+  "obra_geral": {
+    "codigo": 271,
+    "classificacao": "3.1.1.01",
+    "nome_completo": "CUSTO DA OBRA GERAL",
+    "nome_display": "CUSTO DA OBRA GERAL",
+    "cno": null,
+    "cno_digits": "",
+    "dropdown_label": "CUSTO DA OBRA GERAL — Cód. 271 (3.1.1.01)",
+    "categorias": {
+      "CONCRETOS E PRÉ-MOLDADOS": {
+        "codigo": 2045,
+        "classificacao": "3.1.1.01.001",
+        "nome": "CONCRETOS E PRÉ-MOLDADOS",
+        "label": "CONCRETOS E PRÉ-MOLDADOS — Cód. 2045 (3.1.1.01.001)"
+      },
+      "DESPESAS COM ALIMENTACAO": {
+        "codigo": 1688,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM ALIMENTACAO",
+        "label": "DESPESAS COM ALIMENTACAO — Cód. 1688 (3.1.1.01.001)"
+      },
+      "DESPESAS COM AREIA BRITA E SEIXO": {
+        "codigo": 1022,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM AREIA BRITA E SEIXO",
+        "label": "DESPESAS COM AREIA BRITA E SEIXO — Cód. 1022 (3.1.1.01.001)"
+      },
+      "DESPESAS COM CIMENTO": {
+        "codigo": 2044,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM CIMENTO",
+        "label": "DESPESAS COM CIMENTO — Cód. 2044 (3.1.1.01.001)"
+      },
+      "DESPESAS COM CIMENTO FERRO ARAME": {
+        "codigo": 1020,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM CIMENTO FERRO ARAME",
+        "label": "DESPESAS COM CIMENTO FERRO ARAME — Cód. 1020 (3.1.1.01.001)"
+      },
+      "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES": {
+        "codigo": 272,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES",
+        "label": "DESPESAS COM COMBUSTIVEIS E LUBRIFICANTES — Cód. 272 (3.1.1.01.001)"
+      },
+      "DESPESAS COM DIVISORIAS": {
+        "codigo": 2047,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM DIVISORIAS",
+        "label": "DESPESAS COM DIVISORIAS — Cód. 2047 (3.1.1.01.001)"
+      },
+      "DESPESAS COM FERRAMENTAS": {
+        "codigo": 1025,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM FERRAMENTAS",
+        "label": "DESPESAS COM FERRAMENTAS — Cód. 1025 (3.1.1.01.001)"
+      },
+      "DESPESAS COM INFORMATICA E SEGURANÇA": {
+        "codigo": 2046,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM INFORMATICA E SEGURANÇA",
+        "label": "DESPESAS COM INFORMATICA E SEGURANÇA — Cód. 2046 (3.1.1.01.001)"
+      },
+      "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS": {
+        "codigo": 1185,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS",
+        "label": "DESPESAS COM LOCAÇÃO DE MAQUINAS E EQUIPAMENTOS — Cód. 1185 (3.1.1.01.001)"
+      },
+      "DESPESAS COM MADEIRA": {
+        "codigo": 1023,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM MADEIRA",
+        "label": "DESPESAS COM MADEIRA — Cód. 1023 (3.1.1.01.001)"
+      },
+      "DESPESAS COM MASSAS; ARGAMASSAS ...": {
+        "codigo": 2112,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM MASSAS; ARGAMASSAS ...",
+        "label": "DESPESAS COM MASSAS; ARGAMASSAS ... — Cód. 2112 (3.1.1.01.001)"
+      },
+      "DESPESAS COM MATERIAL DE ESCRITORIO": {
+        "codigo": 2050,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM MATERIAL DE ESCRITORIO",
+        "label": "DESPESAS COM MATERIAL DE ESCRITORIO — Cód. 2050 (3.1.1.01.001)"
+      },
+      "DESPESAS COM MATERIAL DIVERSOS": {
+        "codigo": 1027,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM MATERIAL DIVERSOS",
+        "label": "DESPESAS COM MATERIAL DIVERSOS — Cód. 1027 (3.1.1.01.001)"
+      },
+      "DESPESAS COM MATERIAL ELETRICO": {
+        "codigo": 1021,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM MATERIAL ELETRICO",
+        "label": "DESPESAS COM MATERIAL ELETRICO — Cód. 1021 (3.1.1.01.001)"
+      },
+      "DESPESAS COM MATERIAL HIDRAULICO": {
+        "codigo": 1647,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM MATERIAL HIDRAULICO",
+        "label": "DESPESAS COM MATERIAL HIDRAULICO — Cód. 1647 (3.1.1.01.001)"
+      },
+      "DESPESAS COM PISO INTERTRAVADOS": {
+        "codigo": 2048,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM PISO INTERTRAVADOS",
+        "label": "DESPESAS COM PISO INTERTRAVADOS — Cód. 2048 (3.1.1.01.001)"
+      },
+      "DESPESAS COM PISOS EM GERAL": {
+        "codigo": 1755,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM PISOS EM GERAL",
+        "label": "DESPESAS COM PISOS EM GERAL — Cód. 1755 (3.1.1.01.001)"
+      },
+      "DESPESAS COM PLATISFICANTE, ADESIVOS, TECK-BOND": {
+        "codigo": 2049,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM PLATISFICANTE, ADESIVOS, TECK-BOND",
+        "label": "DESPESAS COM PLATISFICANTE, ADESIVOS, TECK-BOND — Cód. 2049 (3.1.1.01.001)"
+      },
+      "DESPESAS COM PRODUTOS DE LIMPEZA": {
+        "codigo": 1181,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM PRODUTOS DE LIMPEZA",
+        "label": "DESPESAS COM PRODUTOS DE LIMPEZA — Cód. 1181 (3.1.1.01.001)"
+      },
+      "DESPESAS COM REVESTIMENTOS E ACABAMENTOS": {
+        "codigo": 1231,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS",
+        "label": "DESPESAS COM REVESTIMENTOS E ACABAMENTOS — Cód. 1231 (3.1.1.01.001)"
+      },
+      "DESPESAS COM SERVIÇOS DE TERCEIRO": {
+        "codigo": 1639,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM SERVIÇOS DE TERCEIRO",
+        "label": "DESPESAS COM SERVIÇOS DE TERCEIRO — Cód. 1639 (3.1.1.01.001)"
+      },
+      "DESPESAS COM TELHAS": {
+        "codigo": 1664,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM TELHAS",
+        "label": "DESPESAS COM TELHAS — Cód. 1664 (3.1.1.01.001)"
+      },
+      "DESPESAS COM TIJOLOS": {
+        "codigo": 1026,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM TIJOLOS",
+        "label": "DESPESAS COM TIJOLOS — Cód. 1026 (3.1.1.01.001)"
+      },
+      "DESPESAS COM TINTAS E VERNIZACAO": {
+        "codigo": 1024,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM TINTAS E VERNIZACAO",
+        "label": "DESPESAS COM TINTAS E VERNIZACAO — Cód. 1024 (3.1.1.01.001)"
+      },
+      "DESPESAS COM VIDROS E ACESSORIOS": {
+        "codigo": 1638,
+        "classificacao": "3.1.1.01.001",
+        "nome": "DESPESAS COM VIDROS E ACESSORIOS",
+        "label": "DESPESAS COM VIDROS E ACESSORIOS — Cód. 1638 (3.1.1.01.001)"
+      }
+    }
+  },
+  "source_file": "C:\\Users\\joao_\\OneDrive\\Área de Trabalho\\Antigraviry\\modulo_fiscal_v1-20260929T104928Z-1-001\\modulo_fiscal_v1\\data\\Contas.xlsx"
+}
