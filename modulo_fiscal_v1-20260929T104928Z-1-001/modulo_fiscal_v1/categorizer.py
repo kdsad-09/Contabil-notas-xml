@@ -35,9 +35,30 @@ HIKARI_DESPESAS = {
         "combustivel", "gasolina", "diesel", "oleo", "lubrificante",
         "graxa", "etanol", "alcool",
     ]),
-    "002": ("DESPESAS COM CIMENTO CAL FERRO ARAME", [
-        "cimento", "ferro", "arame", "aco", "vergalhao", "concreto",
-        "argamassa", "cal", "cp ii", "cp iii", "cp iv", "tela soldada",
+    "002":"002": ("DESPESAS COM CIMENTO CAL FERRO ARAME", [
+    "ferro",
+    "arame",
+    "aco",
+    "vergalhao",
+    "vergalhões",
+    "barra de ferro",
+    "barra de aço",
+    "perfil de aço",
+    "perfil metalico",
+    "perfil metálico",
+    "cantoneira",
+    "metalão",
+    "metalao",
+    "trelica",
+    "tela soldada",
+    "tela soldada galvanizada",
+    "ferro redondo",
+    "ferro chato",
+    "ferro quadrado",
+    "ferro mecânico",
+    "aço carbono",
+    "aco carbono"
+]),,
     ]),
     "003": ("DESPESAS COM MATERIAL ELETRICO", [
         "eletric", "fio", "cabo", "tomada", "disjuntor", "lampada",
@@ -412,32 +433,340 @@ def categorize_invoice(items_list: list, inf_adic: str, cno: str):
         return "DESPESAS COM MATERIAL DIVERSOS", "Nenhuma palavra-chave especifica identificada"
 
 
-def suggest_project(inf_adic: str, cno: str):
-    """
-    Suggests the Obra based on CNO or contents of infAdic.
-    If no CNO → "CUSTO DA OBRA GERAL"
-    """
-    obra_name = None
+import re
 
-    if inf_adic:
-        match = re.search(
-            r'(?:referente\s+a\s+obra|obra|projeto)\s*[:\-]?\s*([^.;,\n]+)',
-            inf_adic, re.IGNORECASE
+
+# ============================================================
+# REGRAS ESPECÍFICAS DE MATERIAIS
+# ============================================================
+
+REGRAS_MATERIAIS_PRIORITARIAS = {
+
+    # --------------------------------------------------------
+    # TIJOLOS / BLOCOS
+    # --------------------------------------------------------
+    "DESPESAS COM TIJOLOS": [
+        r"\btijolo\b",
+        r"\btijolos\b",
+        r"\bbloco ceramico\b",
+        r"\bbloco cerâmico\b",
+        r"\bbloco de ceramica\b",
+        r"\bbloco de cerâmica\b",
+        r"\bbloco concreto\b",
+        r"\bbloco de concreto\b",
+        r"\bbloco estrutural\b",
+        r"\bblocos estruturais\b",
+    ],
+
+    # --------------------------------------------------------
+    # FERRO / AÇO / VERGALHÃO / ARAME
+    #
+    # IMPORTANTE:
+    # Esta é a categoria que atualmente possui o nome
+    # "DESPESAS COM CIMENTO CAL FERRO ARAME".
+    #
+    # Apesar do nome conter CIMENTO e CAL, ela será tratada
+    # pelo sistema como categoria de FERRO.
+    # --------------------------------------------------------
+    "DESPESAS COM CIMENTO CAL FERRO ARAME": [
+        r"\bferro\b",
+        r"\barame\b",
+        r"\baço\b",
+        r"\baco\b",
+        r"\bvergalhão\b",
+        r"\bvergalhao\b",
+        r"\bbarra de ferro\b",
+        r"\bbarras de ferro\b",
+        r"\bbarra de aço\b",
+        r"\bbarras de aço\b",
+        r"\bbarra de aco\b",
+        r"\bbarras de aco\b",
+        r"\bperfil de aço\b",
+        r"\bperfil de aco\b",
+        r"\bperfil metálico\b",
+        r"\bperfil metalico\b",
+        r"\bcantoneira\b",
+        r"\bmetalão\b",
+        r"\bmetalao\b",
+        r"\btreliça\b",
+        r"\btrelica\b",
+        r"\btela soldada\b",
+        r"\btela galvanizada\b",
+        r"\bferro redondo\b",
+        r"\bferro chato\b",
+        r"\bferro quadrado\b",
+        r"\baço carbono\b",
+        r"\baco carbono\b",
+    ],
+}
+
+
+def _texto_normalizado(texto):
+    """
+    Normaliza o texto para facilitar a classificação.
+    """
+    if not texto:
+        return ""
+
+    texto = str(texto).lower()
+
+    # Remove acentos
+    substituicoes = {
+        "á": "a",
+        "à": "a",
+        "ã": "a",
+        "â": "a",
+        "ä": "a",
+        "é": "e",
+        "è": "e",
+        "ê": "e",
+        "ë": "e",
+        "í": "i",
+        "ì": "i",
+        "î": "i",
+        "ï": "i",
+        "ó": "o",
+        "ò": "o",
+        "õ": "o",
+        "ô": "o",
+        "ö": "o",
+        "ú": "u",
+        "ù": "u",
+        "û": "u",
+        "ü": "u",
+        "ç": "c",
+    }
+
+    for original, novo in substituicoes.items():
+        texto = texto.replace(original, novo)
+
+    # Mantém letras/números e transforma o restante em espaço
+    texto = re.sub(r"[^a-z0-9\s]", " ", texto)
+
+    # Remove espaços duplicados
+    texto = re.sub(r"\s+", " ", texto).strip()
+
+    return texto
+
+
+def _encontrar_categoria_prioritaria(texto):
+    """
+    Verifica primeiro as categorias que possuem regras
+    específicas e que não podem depender de pontuação genérica.
+    """
+
+    texto = _texto_normalizado(texto)
+
+    # Ordem proposital:
+    # primeiro procura termos específicos como
+    # "bloco concreto", antes de termos genéricos.
+    regras_ordenadas = [
+
+        (
+            "DESPESAS COM TIJOLOS",
+            [
+                r"\btijolos?\b",
+                r"\bbloco ceramico\b",
+                r"\bbloco de ceramica\b",
+                r"\bbloco concreto\b",
+                r"\bbloco de concreto\b",
+                r"\bbloco estrutural\b",
+                r"\bblocos estruturais\b",
+            ]
+        ),
+
+        (
+            "DESPESAS COM CIMENTO CAL FERRO ARAME",
+            [
+                r"\bvergalhoes?\b",
+                r"\bferro\b",
+                r"\barame\b",
+                r"\baco\b",
+                r"\bbarras? de ferro\b",
+                r"\bbarras? de aco\b",
+                r"\bperfil de aco\b",
+                r"\bperfil metalico\b",
+                r"\bcantoneira\b",
+                r"\bmetalao\b",
+                r"\btrelica\b",
+                r"\btela soldada\b",
+                r"\btela galvanizada\b",
+                r"\bferro redondo\b",
+                r"\bferro chato\b",
+                r"\bferro quadrado\b",
+                r"\baco carbono\b",
+            ]
+        ),
+    ]
+
+    for categoria, padroes in regras_ordenadas:
+
+        for padrao in padroes:
+
+            if re.search(padrao, texto):
+                return categoria
+
+    return None
+
+
+def categorize_invoice(items_list, inf_adic, cno):
+    """
+    Classifica uma nota fiscal.
+
+    NOVA LÓGICA:
+
+    1. Analisa os itens da nota.
+    2. Primeiro verifica regras específicas.
+    3. Tijolos/blocos têm prioridade própria.
+    4. Ferro/aço/vergalhão/arame entram na categoria
+       "DESPESAS COM CIMENTO CAL FERRO ARAME".
+    5. Cimento NÃO entra nessa categoria.
+    6. Informação adicional da nota não é usada para decidir
+       material quando existem itens identificados.
+    7. Somente depois utiliza a classificação genérica existente.
+    """
+
+    # --------------------------------------------------------
+    # GARANTE QUE items_list SEJA UMA LISTA
+    # --------------------------------------------------------
+
+    if items_list is None:
+        items_list = []
+
+    if isinstance(items_list, str):
+        items_list = [items_list]
+
+    # Remove valores vazios
+    itens_validos = [
+        str(item).strip()
+        for item in items_list
+        if item is not None and str(item).strip()
+    ]
+
+    # --------------------------------------------------------
+    # 1. PRIMEIRA ETAPA:
+    # CLASSIFICAÇÃO ITEM POR ITEM
+    # --------------------------------------------------------
+
+    categorias_detectadas = []
+
+    for item in itens_validos:
+
+        categoria = _encontrar_categoria_prioritaria(item)
+
+        if categoria:
+            categorias_detectadas.append(
+                (categoria, item)
+            )
+
+    # --------------------------------------------------------
+    # 2. SE ENCONTROU TIJOLO/BLOCO
+    # --------------------------------------------------------
+
+    categorias_tijolo = [
+        item
+        for categoria, item in categorias_detectadas
+        if categoria == "DESPESAS COM TIJOLOS"
+    ]
+
+    if categorias_tijolo:
+        return (
+            "DESPESAS COM TIJOLOS",
+            "Classificação direta por item: tijolo/bloco identificado."
         )
-        if match:
-            name = match.group(1).strip()
-            name = re.sub(r'\s*CNO.*$', '', name, flags=re.IGNORECASE).strip()
-            if len(name) > 3:
-                obra_name = name
 
-        text_upper = inf_adic.upper()
-        for cls, (code, name) in HIKARI_OBRAS.items():
-            if cls != "3.1.1.01" and name in text_upper:
-                return name, f"Identificado via nome da obra no infAdic (Codigo: {code})"
+    # --------------------------------------------------------
+    # 3. SE ENCONTROU FERRO/AÇO
+    # --------------------------------------------------------
 
-    if cno and obra_name:
-        return f"{obra_name} (CNO: {cno})", "Identificado via infAdic + CNO"
-    elif cno:
-        return f"Obra CNO: {cno}", "Identificado via codigo CNO"
+    categorias_ferro = [
+        item
+        for categoria, item in categorias_detectadas
+        if categoria == "DESPESAS COM CIMENTO CAL FERRO ARAME"
+    ]
 
-    return "CUSTO DA OBRA GERAL", "CNO nao identificado — classificado como Obra Geral"
+    if categorias_ferro:
+        return (
+            "DESPESAS COM CIMENTO CAL FERRO ARAME",
+            "Classificação direta por item: ferro/aço/vergalhão/arame identificado."
+        )
+
+    # --------------------------------------------------------
+    # 4. CLASSIFICAÇÃO GENÉRICA
+    #
+    # IMPORTANTE:
+    # Aqui usamos SOMENTE os itens.
+    #
+    # Não misturamos o inf_adic porque uma observação da NF
+    # pode mencionar vários materiais e contaminar a categoria.
+    # --------------------------------------------------------
+
+    raw = " ".join(itens_validos)
+
+    text = _texto_normalizado(raw)
+
+    scores = {}
+
+    for code, (desc, keywords) in HIKARI_DESPESAS.items():
+
+        # Não deixa a categoria de ferro voltar a receber
+        # cimento/cal/concreto pela classificação genérica.
+        if desc == "DESPESAS COM CIMENTO CAL FERRO ARAME":
+            keywords = [
+                kw for kw in keywords
+                if _texto_normalizado(kw) not in [
+                    "cimento",
+                    "cal",
+                    "concreto",
+                    "argamassa",
+                    "cp ii",
+                    "cp iii",
+                    "cp iv",
+                ]
+            ]
+
+        score = 0
+
+        for kw in keywords:
+
+            kw_normalizado = _texto_normalizado(kw)
+
+            if not kw_normalizado:
+                continue
+
+            # Usa limite de palavra para evitar falsos positivos
+            padrao = r"\b" + re.escape(kw_normalizado) + r"\b"
+
+            if re.search(padrao, text):
+                score += 1
+
+        scores[desc] = score
+
+    # --------------------------------------------------------
+    # 5. ENCONTRA A MAIOR PONTUAÇÃO
+    # --------------------------------------------------------
+
+    if scores:
+
+        best_cat = max(
+            scores,
+            key=scores.get
+        )
+
+        best_score = scores[best_cat]
+
+        if best_score > 0:
+
+            return (
+                best_cat,
+                f"Detectado via palavras-chave dos itens (Score: {best_score})."
+            )
+
+    # --------------------------------------------------------
+    # 6. SEM CLASSIFICAÇÃO
+    # --------------------------------------------------------
+
+    return (
+        "DESPESAS COM MATERIAL DIVERSOS",
+        "Nenhuma regra de material foi identificada."
+    )
