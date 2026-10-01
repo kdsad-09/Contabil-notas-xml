@@ -58,7 +58,6 @@ HIKARI_DESPESAS = {
     "ferro mecânico",
     "aço carbono",
     "aco carbono"
-]),,
     ]),
     "003": ("DESPESAS COM MATERIAL ELETRICO", [
         "eletric", "fio", "cabo", "tomada", "disjuntor", "lampada",
