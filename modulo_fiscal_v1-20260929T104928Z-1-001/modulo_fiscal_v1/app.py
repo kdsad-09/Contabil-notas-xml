@@ -3885,7 +3885,7 @@ elif page == "Exportacao":
                 .apply(_fmt_brl)
             )
 
-                st.dataframe(
+          st.dataframe(
                 df_boletos_view[
                     [
                         "Vencimento",
