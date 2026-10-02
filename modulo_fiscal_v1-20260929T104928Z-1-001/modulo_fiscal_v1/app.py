@@ -37,6 +37,10 @@ from categorizer import (
     HIKARI_DESPESAS,
     HIKARI_OBRAS,
     CODIGO_POR_OBRA,
+    load_plano_json,
+    save_plano_json,
+    get_all_categorias,
+    get_all_obras,
 )
 
 from exporter import export_to_excel
