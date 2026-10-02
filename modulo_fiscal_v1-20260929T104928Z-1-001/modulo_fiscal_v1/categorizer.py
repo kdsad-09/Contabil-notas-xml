@@ -1,21 +1,36 @@
 """
 categorizer.py — Hikari Construções LTDA EPP
 
-Expense codes extracted from official balancete (plano de contas 3.1.1).
-Each obra center has its own set of short numeric codes (Código column).
+Classificação de despesas e obras para o Catraca Fiscal.
 
-Suporta plano de contas dinâmico: categorias e obras extras salvas em
-plano_de_contas.json persistem entre sessões.
+Compatível com app.py:
+- categorize_invoice
+- suggest_project
+- HIKARI_DESPESAS_LISTA
+- HIKARI_OBRAS_LISTA
+- get_codigo_contabil
+- HIKARI_DESPESAS
+- HIKARI_OBRAS
+- CODIGO_POR_OBRA
+
+Também mantém:
+- plano de contas dinâmico;
+- persistência em plano_de_contas.json;
+- códigos contábeis do balancete;
+- classificação prioritária de tijolos/blocos;
+- classificação de ferro/aço/vergalhão/arame;
+- CIMENTO NÃO é usado para classificar na categoria 002.
 """
 
-import re
 import json
 import os
+import re
+import unicodedata
 from typing import Optional
 
 
 # ============================================================
-# CAMINHO DO ARQUIVO DE PERSISTÊNCIA
+# ARQUIVO DE PERSISTÊNCIA
 # ============================================================
 
 _PLANO_JSON = os.path.join(
@@ -29,66 +44,69 @@ _PLANO_JSON = os.path.join(
 # ============================================================
 
 def _normalize(text: str) -> str:
-    """Lowercase and remove accents for keyword matching."""
-
-    if not text:
+    """
+    Normaliza texto:
+    - minúsculas;
+    - remove acentos;
+    - troca pontuação por espaço;
+    - remove espaços duplicados.
+    """
+    if text is None:
         return ""
 
-    t = str(text).lower()
+    text = str(text).lower()
 
-    for a, b in [
-        ("á", "a"),
-        ("à", "a"),
-        ("â", "a"),
-        ("ã", "a"),
-        ("ä", "a"),
-        ("é", "e"),
-        ("è", "e"),
-        ("ê", "e"),
-        ("ë", "e"),
-        ("í", "i"),
-        ("ì", "i"),
-        ("î", "i"),
-        ("ï", "i"),
-        ("ó", "o"),
-        ("ò", "o"),
-        ("ô", "o"),
-        ("õ", "o"),
-        ("ö", "o"),
-        ("ú", "u"),
-        ("ù", "u"),
-        ("û", "u"),
-        ("ü", "u"),
-        ("ç", "c"),
-    ]:
-        t = t.replace(a, b)
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(
+        char for char in text
+        if not unicodedata.combining(char)
+    )
 
-    return t
+    text = re.sub(r"[^a-z0-9\s]", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+
+    return text
 
 
-def _texto_normalizado(texto: str) -> str:
+# Compatibilidade com versões anteriores
+def _texto_normalizado(texto):
+    return _normalize(texto)
+
+
+def _keyword_pattern(keyword: str) -> str:
     """
-    Normaliza texto para classificação.
+    Cria regex segura para palavra/frase inteira.
 
-    Remove acentos, pontuação e espaços duplicados.
+    Exemplo:
+        'barra de aço'
+    vira uma expressão que também funciona após remover acentos.
     """
+    keyword = _normalize(keyword)
 
-    texto = _normalize(texto)
-
-    if not texto:
+    if not keyword:
         return ""
 
-    # Mantém somente letras, números e espaços
-    texto = re.sub(r"[^a-z0-9\s]", " ", texto)
+    partes = keyword.split()
 
-    # Remove espaços duplicados
-    texto = re.sub(r"\s+", " ", texto).strip()
+    return (
+        r"\b"
+        + r"\s+".join(re.escape(parte) for parte in partes)
+        + r"\b"
+    )
 
-    return texto
+
+def _contains_keyword(text: str, keyword: str) -> bool:
+    text = _normalize(text)
+    pattern = _keyword_pattern(keyword)
+
+    if not pattern:
+        return False
+
+    return bool(re.search(pattern, text))
 
 
 # ============================================================
-# HIKARI — TIPOS DE DESPESA
+# HIKARI — CATEGORIAS DE DESPESA
 # ============================================================
 
 HIKARI_DESPESAS = {
@@ -107,30 +125,10 @@ HIKARI_DESPESAS = {
         ],
     ),
 
-    # ========================================================
-    # 002
-    #
     # IMPORTANTE:
-    # Apesar do nome contábil conter "CIMENTO CAL",
-    # esta categoria será utilizada para:
-    #
-    # FERRO
-    # AÇO
-    # VERGALHÃO
-    # ARAME
-    # TELAS
-    # PERFIS METÁLICOS
-    #
-    # NÃO colocar aqui:
-    # cimento
-    # cal
-    # concreto
-    # argamassa
-    # CP II
-    # CP III
-    # CP IV
-    # ========================================================
-
+    # Apesar do nome histórico conter CIMENTO e CAL,
+    # esta categoria será utilizada nas regras automáticas
+    # somente para FERRO / AÇO / ARAME / VERGALHÃO.
     "002": (
         "DESPESAS COM CIMENTO CAL FERRO ARAME",
         [
@@ -138,6 +136,7 @@ HIKARI_DESPESAS = {
             "arame",
             "aco",
             "vergalhao",
+            "vergalhoes",
             "barra de ferro",
             "barras de ferro",
             "barra de aco",
@@ -148,6 +147,7 @@ HIKARI_DESPESAS = {
             "metalao",
             "trelica",
             "tela soldada",
+            "tela soldada galvanizada",
             "tela galvanizada",
             "ferro redondo",
             "ferro chato",
@@ -244,17 +244,12 @@ HIKARI_DESPESAS = {
         ],
     ),
 
-    # ========================================================
-    # 008 — TIJOLOS / BLOCOS
-    # ========================================================
-
     "008": (
         "DESPESAS COM TIJOLOS",
         [
             "tijolo",
             "tijolos",
             "bloco",
-            "blocos",
             "bloco ceramico",
             "bloco de ceramica",
             "bloco concreto",
@@ -361,11 +356,11 @@ HIKARI_DESPESAS = {
         "DESPESAS COM TELHAS",
         [
             "telha",
-            "telhas",
             "cumeeira",
             "calha",
             "rufo",
             "cobertura",
+            "telhas",
         ],
     ),
 
@@ -396,20 +391,14 @@ HIKARI_DESPESAS = {
 }
 
 
-# ============================================================
-# LISTA DE CATEGORIAS
-# ============================================================
-
+# Lista usada pelos dropdowns do app.py
 HIKARI_DESPESAS_LISTA = [
     desc
     for _, (desc, _) in sorted(HIKARI_DESPESAS.items())
 ]
 
 
-# ============================================================
-# CATEGORIA → CÓDIGO
-# ============================================================
-
+# Categoria -> sufixo contábil
 CODIGO_POR_DESPESA = {
     desc: suffix
     for suffix, (desc, _) in HIKARI_DESPESAS.items()
@@ -505,10 +494,7 @@ HIKARI_OBRAS_LISTA = [
 )
 
 
-# ============================================================
-# REVERSE LOOKUP DAS OBRAS
-# ============================================================
-
+# Nome da obra -> classificação contábil
 CODIGO_POR_OBRA = {
     name: cls
     for cls, (code, name) in HIKARI_OBRAS.items()
@@ -521,10 +507,7 @@ CODIGO_POR_OBRA = {
 
 _CODIGOS_BALANCETE = {
 
-    # --------------------------------------------------------
     # CUSTO DA OBRA GERAL
-    # --------------------------------------------------------
-
     ("CUSTO DA OBRA GERAL", "001"): 272,
     ("CUSTO DA OBRA GERAL", "002"): 1020,
     ("CUSTO DA OBRA GERAL", "003"): 1021,
@@ -543,10 +526,7 @@ _CODIGOS_BALANCETE = {
     ("CUSTO DA OBRA GERAL", "017"): 1688,
     ("CUSTO DA OBRA GERAL", "018"): 1755,
 
-    # --------------------------------------------------------
     # CETEC SENAI ARAGUAINA
-    # --------------------------------------------------------
-
     ("CETEC SENAI ARAGUAINA", "002"): 275,
     ("CETEC SENAI ARAGUAINA", "003"): 276,
     ("CETEC SENAI ARAGUAINA", "004"): 277,
@@ -560,10 +540,7 @@ _CODIGOS_BALANCETE = {
     ("CETEC SENAI ARAGUAINA", "012"): 1186,
     ("CETEC SENAI ARAGUAINA", "015"): 1232,
 
-    # --------------------------------------------------------
     # ANFITEATRO SESI ARAGUAINA
-    # --------------------------------------------------------
-
     ("ANFITEATRO SESI ARAGUAINA", "001"): 871,
     ("ANFITEATRO SESI ARAGUAINA", "002"): 872,
     ("ANFITEATRO SESI ARAGUAINA", "003"): 873,
@@ -578,10 +555,7 @@ _CODIGOS_BALANCETE = {
     ("ANFITEATRO SESI ARAGUAINA", "015"): 1669,
     ("ANFITEATRO SESI ARAGUAINA", "016"): 1757,
 
-    # --------------------------------------------------------
-    # SEDE SESI SENAI PALMAS-TO
-    # --------------------------------------------------------
-
+    # SEDE SESI SENAI PALMAS
     ("SEDE SESI SENAI PALMAS-TO", "002"): 882,
     ("SEDE SESI SENAI PALMAS-TO", "003"): 883,
     ("SEDE SESI SENAI PALMAS-TO", "004"): 884,
@@ -593,10 +567,7 @@ _CODIGOS_BALANCETE = {
     ("SEDE SESI SENAI PALMAS-TO", "010"): 1189,
     ("SEDE SESI SENAI PALMAS-TO", "012"): 1234,
 
-    # --------------------------------------------------------
     # ETI TAQUARI
-    # --------------------------------------------------------
-
     ("ETI TAQUARI", "002"): 902,
     ("ETI TAQUARI", "003"): 903,
     ("ETI TAQUARI", "004"): 904,
@@ -609,10 +580,7 @@ _CODIGOS_BALANCETE = {
     ("ETI TAQUARI", "011"): 1193,
     ("ETI TAQUARI", "012"): 1206,
 
-    # --------------------------------------------------------
     # ETI PORTO LUZIMANGUES
-    # --------------------------------------------------------
-
     ("ETI PORTO LUZIMANGUES", "002"): 912,
     ("ETI PORTO LUZIMANGUES", "003"): 913,
     ("ETI PORTO LUZIMANGUES", "004"): 914,
@@ -626,10 +594,7 @@ _CODIGOS_BALANCETE = {
     ("ETI PORTO LUZIMANGUES", "014"): 1655,
     ("ETI PORTO LUZIMANGUES", "015"): 1760,
 
-    # --------------------------------------------------------
     # SESI DR GURUPI
-    # --------------------------------------------------------
-
     ("SESI DR GURUPI", "002"): 922,
     ("SESI DR GURUPI", "003"): 923,
     ("SESI DR GURUPI", "004"): 924,
@@ -643,10 +608,7 @@ _CODIGOS_BALANCETE = {
     ("SESI DR GURUPI", "014"): 1665,
     ("SESI DR GURUPI", "016"): 1856,
 
-    # --------------------------------------------------------
     # BLOCO IFTO ARAGUAINA
-    # --------------------------------------------------------
-
     ("BLOCO IFTO ARAGUAINA", "002"): 932,
     ("BLOCO IFTO ARAGUAINA", "003"): 933,
     ("BLOCO IFTO ARAGUAINA", "004"): 934,
@@ -660,18 +622,12 @@ _CODIGOS_BALANCETE = {
     ("BLOCO IFTO ARAGUAINA", "015"): 1663,
     ("BLOCO IFTO ARAGUAINA", "016"): 1762,
 
-    # --------------------------------------------------------
     # REFORMA DUQUE DE CAXIAS II
-    # --------------------------------------------------------
-
     ("REFORMA DUQUE DE CAXIAS II", "002"): 942,
     ("REFORMA DUQUE DE CAXIAS II", "003"): 943,
     ("REFORMA DUQUE DE CAXIAS II", "004"): 944,
 
-    # --------------------------------------------------------
     # AMPLIACAO SEDE CREA PALMAS
-    # --------------------------------------------------------
-
     ("AMPLIACAO SEDE CREA PALMAS", "002"): 952,
     ("AMPLIACAO SEDE CREA PALMAS", "003"): 953,
     ("AMPLIACAO SEDE CREA PALMAS", "004"): 954,
@@ -685,10 +641,7 @@ _CODIGOS_BALANCETE = {
     ("AMPLIACAO SEDE CREA PALMAS", "014"): 1721,
     ("AMPLIACAO SEDE CREA PALMAS", "015"): 1764,
 
-    # --------------------------------------------------------
     # CICLOVIA CESAMAR
-    # --------------------------------------------------------
-
     ("CICLOVIA CESAMAR", "002"): 962,
     ("CICLOVIA CESAMAR", "003"): 963,
     ("CICLOVIA CESAMAR", "004"): 964,
@@ -698,10 +651,7 @@ _CODIGOS_BALANCETE = {
     ("CICLOVIA CESAMAR", "012"): 1242,
     ("CICLOVIA CESAMAR", "016"): 1675,
 
-    # --------------------------------------------------------
     # CENTRO DE CONVENCOES PARAISO
-    # --------------------------------------------------------
-
     ("CENTRO DE CONVENCOES PARAISO", "002"): 972,
     ("CENTRO DE CONVENCOES PARAISO", "003"): 973,
     ("CENTRO DE CONVENCOES PARAISO", "006"): 976,
@@ -710,84 +660,23 @@ _CODIGOS_BALANCETE = {
     ("CENTRO DE CONVENCOES PARAISO", "009"): 1206,
     ("CENTRO DE CONVENCOES PARAISO", "010"): 1243,
 
-    # --------------------------------------------------------
-    # CENTRO DE ATENDIMENTO SOCIOEDUCATIVO
-    # --------------------------------------------------------
+    # CENTRO SOCIOEDUCATIVO ARAGUAINA
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "002"): 982,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "003"): 983,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "004"): 984,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "005"): 985,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "006"): 986,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "007"): 987,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "008"): 988,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "009"): 989,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "010"): 1208,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "012"): 1244,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "014"): 1649,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "015"): 1654,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "016"): 1674,
+    ("CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA", "017"): 1670,
 
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "002",
-    ): 982,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "003",
-    ): 983,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "004",
-    ): 984,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "005",
-    ): 985,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "006",
-    ): 986,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "007",
-    ): 987,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "008",
-    ): 988,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "009",
-    ): 989,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "010",
-    ): 1208,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "012",
-    ): 1244,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "014",
-    ): 1649,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "015",
-    ): 1654,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "016",
-    ): 1674,
-
-    (
-        "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA",
-        "017",
-    ): 1670,
-
-    # --------------------------------------------------------
     # GUARITA SENAI CT GURUPI
-    # --------------------------------------------------------
-
     ("GUARITA SENAI CT GURUPI", "002"): 1980,
     ("GUARITA SENAI CT GURUPI", "003"): 1981,
     ("GUARITA SENAI CT GURUPI", "006"): 1984,
@@ -802,7 +691,9 @@ _CODIGOS_BALANCETE = {
 # ============================================================
 
 def load_plano_json() -> dict:
-    """Carrega o plano de contas extra do arquivo JSON."""
+    """
+    Carrega categorias e obras extras.
+    """
 
     if os.path.exists(_PLANO_JSON):
 
@@ -812,9 +703,12 @@ def load_plano_json() -> dict:
                 _PLANO_JSON,
                 "r",
                 encoding="utf-8"
-            ) as f:
+            ) as arquivo:
 
-                return json.load(f)
+                dados = json.load(arquivo)
+
+                if isinstance(dados, dict):
+                    return dados
 
         except Exception:
             pass
@@ -826,33 +720,41 @@ def load_plano_json() -> dict:
 
 
 def save_plano_json(data: dict) -> None:
-    """Salva o plano de contas extra no arquivo JSON."""
+    """
+    Salva categorias e obras extras.
+    """
 
     with open(
         _PLANO_JSON,
         "w",
         encoding="utf-8"
-    ) as f:
+    ) as arquivo:
 
         json.dump(
             data,
-            f,
+            arquivo,
             ensure_ascii=False,
             indent=2
         )
 
 
-def get_all_categorias(extra_cats: list) -> list:
-    """Retorna a lista completa de categorias (base + extras)."""
+def get_all_categorias(extra_cats: Optional[list] = None) -> list:
+    """
+    Retorna categorias base + categorias extras.
+    """
 
     base = list(HIKARI_DESPESAS_LISTA)
 
-    for item in extra_cats:
+    for item in (extra_cats or []):
 
-        nome = item.get(
-            "nome",
-            ""
-        ).strip().upper()
+        if not isinstance(item, dict):
+            continue
+
+        nome = (
+            item.get("nome", "")
+            .strip()
+            .upper()
+        )
 
         if nome and nome not in base:
             base.append(nome)
@@ -860,17 +762,23 @@ def get_all_categorias(extra_cats: list) -> list:
     return base
 
 
-def get_all_obras(extra_obras: list) -> list:
-    """Retorna a lista completa de obras (base + extras)."""
+def get_all_obras(extra_obras: Optional[list] = None) -> list:
+    """
+    Retorna obras base + obras extras.
+    """
 
     base = list(HIKARI_OBRAS_LISTA)
 
-    for item in extra_obras:
+    for item in (extra_obras or []):
 
-        nome = item.get(
-            "nome",
-            ""
-        ).strip().upper()
+        if not isinstance(item, dict):
+            continue
+
+        nome = (
+            item.get("nome", "")
+            .strip()
+            .upper()
+        )
 
         if nome and nome not in base:
             base.append(nome)
@@ -887,43 +795,46 @@ def get_codigo_contabil(
     obra_nome: Optional[str] = None,
     extra_cats: Optional[list] = None,
 ) -> str:
-    """
-    Returns the short numeric code (Código column from balancete)
-    for a given category + obra combination.
 
-    If the specific combo is not in the balancete,
-    falls back to OBRA GERAL code.
-
-    If still not found, returns the suffix.
     """
+    Retorna o código contábil da categoria dentro da obra.
+
+    Se a combinação específica não existir,
+    utiliza o código da OBRA GERAL com prefixo "~".
+    """
+
+    categoria = str(categoria or "").strip().upper()
 
     if not obra_nome:
         obra_nome = "CUSTO DA OBRA GERAL"
 
-    # --------------------------------------------------------
-    # Categorias extras
-    # --------------------------------------------------------
-
-    if extra_cats:
-
-        for item in extra_cats:
-
-            if (
-                item.get("nome", "")
-                .strip()
-                .upper()
-                == categoria
-            ):
-
-                cod = item.get(
-                    "codigo",
-                    ""
-                ).strip()
-
-                return cod if cod else ""
+    obra_nome = str(obra_nome).strip().upper()
 
     # --------------------------------------------------------
-    # Categoria base
+    # CATEGORIAS PERSONALIZADAS
+    # --------------------------------------------------------
+
+    for item in (extra_cats or []):
+
+        if not isinstance(item, dict):
+            continue
+
+        nome = (
+            item.get("nome", "")
+            .strip()
+            .upper()
+        )
+
+        if nome == categoria:
+
+            codigo = str(
+                item.get("codigo", "")
+            ).strip()
+
+            return codigo
+
+    # --------------------------------------------------------
+    # CATEGORIA PADRÃO
     # --------------------------------------------------------
 
     suffix = CODIGO_POR_DESPESA.get(categoria)
@@ -931,390 +842,472 @@ def get_codigo_contabil(
     if not suffix:
         return ""
 
-    # --------------------------------------------------------
-    # Busca combinação obra + despesa
-    # --------------------------------------------------------
-
-    code = _CODIGOS_BALANCETE.get(
-        (
-            obra_nome,
-            suffix,
-        )
+    # Código exato da obra
+    codigo = _CODIGOS_BALANCETE.get(
+        (obra_nome, suffix)
     )
 
-    if code is not None:
-        return str(code)
+    if codigo is not None:
+        return str(codigo)
 
-    # --------------------------------------------------------
     # Fallback para obra geral
-    # --------------------------------------------------------
-
-    code = _CODIGOS_BALANCETE.get(
-        (
-            "CUSTO DA OBRA GERAL",
-            suffix,
-        )
+    codigo = _CODIGOS_BALANCETE.get(
+        ("CUSTO DA OBRA GERAL", suffix)
     )
 
-    if code is not None:
-        return f"~{code}"
+    if codigo is not None:
+        return f"~{codigo}"
 
     return suffix
 
 
 # ============================================================
-# REGRAS PRIORITÁRIAS DE CLASSIFICAÇÃO
+# REGRAS PRIORITÁRIAS DE MATERIAL
 # ============================================================
 
-def _encontrar_categoria_prioritaria(texto: str) -> Optional[str]:
+REGRAS_MATERIAIS_PRIORITARIAS = [
+
+    # --------------------------------------------------------
+    # TIJOLOS / BLOCOS
+    #
+    # Esta regra vem primeiro propositalmente.
+    # Assim "BLOCO DE CONCRETO" não é confundido com
+    # qualquer outra categoria.
+    # --------------------------------------------------------
+
+    (
+        "DESPESAS COM TIJOLOS",
+        [
+            r"\btijolos?\b",
+            r"\bblocos?\s+ceramicos?\b",
+            r"\bblocos?\s+de\s+ceramica\b",
+            r"\bblocos?\s+concreto\b",
+            r"\bblocos?\s+de\s+concreto\b",
+            r"\bblocos?\s+estruturais?\b",
+        ],
+    ),
+
+    # --------------------------------------------------------
+    # FERRO / AÇO / VERGALHÃO / ARAME
+    # --------------------------------------------------------
+
+    (
+        "DESPESAS COM CIMENTO CAL FERRO ARAME",
+        [
+            r"\bvergalhoes?\b",
+            r"\bferro\b",
+            r"\barame\b",
+            r"\baco\b",
+            r"\bbarras?\s+de\s+ferro\b",
+            r"\bbarras?\s+de\s+aco\b",
+            r"\bperfil\s+de\s+aco\b",
+            r"\bperfil\s+metalico\b",
+            r"\bcantoneira\b",
+            r"\bmetalao\b",
+            r"\btrelica\b",
+            r"\btela\s+soldada\b",
+            r"\btela\s+galvanizada\b",
+            r"\bferro\s+redondo\b",
+            r"\bferro\s+chato\b",
+            r"\bferro\s+quadrado\b",
+            r"\bferro\s+mecanico\b",
+            r"\baco\s+carbono\b",
+        ],
+    ),
+]
+
+
+def _encontrar_categoria_prioritaria(texto):
     """
-    Identifica materiais que possuem regras específicas.
-
-    A prioridade é:
-
-    1. Tijolos / blocos
-    2. Ferro / aço / vergalhão / arame
-
-    Essas regras são verificadas ANTES da pontuação genérica.
+    Procura categorias que precisam de precedência.
     """
 
-    texto = _texto_normalizado(texto)
+    texto = _normalize(texto)
 
     if not texto:
         return None
 
-    # --------------------------------------------------------
-    # 1. TIJOLOS / BLOCOS
-    # --------------------------------------------------------
+    for categoria, padroes in REGRAS_MATERIAIS_PRIORITARIAS:
 
-    regras_tijolos = [
+        for padrao in padroes:
 
-        r"\btijolo\b",
-        r"\btijolos\b",
-
-        r"\bbloco ceramico\b",
-        r"\bbloco de ceramica\b",
-
-        r"\bbloco concreto\b",
-        r"\bbloco de concreto\b",
-
-        r"\bbloco estrutural\b",
-        r"\bblocos estruturais\b",
-    ]
-
-    for padrao in regras_tijolos:
-
-        if re.search(
-            padrao,
-            texto
-        ):
-
-            return "DESPESAS COM TIJOLOS"
-
-    # --------------------------------------------------------
-    # 2. FERRO / AÇO / VERGALHÃO / ARAME
-    # --------------------------------------------------------
-
-    regras_ferro = [
-
-        r"\bferro\b",
-        r"\barame\b",
-        r"\baco\b",
-        r"\bvergalhao\b",
-
-        r"\bbarra de ferro\b",
-        r"\bbarras de ferro\b",
-
-        r"\bbarra de aco\b",
-        r"\bbarras de aco\b",
-
-        r"\bperfil de aco\b",
-        r"\bperfil metalico\b",
-
-        r"\bcantoneira\b",
-
-        r"\bmetalao\b",
-
-        r"\btrelica\b",
-
-        r"\btela soldada\b",
-        r"\btela galvanizada\b",
-
-        r"\bferro redondo\b",
-        r"\bferro chato\b",
-        r"\bferro quadrado\b",
-        r"\bferro mecanico\b",
-
-        r"\baco carbono\b",
-    ]
-
-    for padrao in regras_ferro:
-
-        if re.search(
-            padrao,
-            texto
-        ):
-
-            return (
-                "DESPESAS COM CIMENTO CAL FERRO ARAME"
-            )
+            if re.search(padrao, texto):
+                return categoria
 
     return None
 
 
 # ============================================================
-# CLASSIFICAÇÃO DA NOTA FISCAL
+# CLASSIFICAÇÃO DE DESPESA
 # ============================================================
 
 def categorize_invoice(
-    items_list: list,
-    inf_adic: str,
-    cno: str,
+    items_list,
+    inf_adic="",
+    cno=""
 ):
     """
-    Classifica uma nota fiscal.
+    Classifica uma NF na categoria de despesa Hikari.
 
-    Lógica:
+    IMPORTANTE PARA O app.py ATUAL:
 
-    1. Analisa os itens individualmente.
-    2. Verifica regras prioritárias.
-    3. Tijolo/bloco recebe categoria de tijolos.
-    4. Ferro/aço/vergalhão/arame recebe a categoria 002.
-    5. A categoria 002 NÃO usa cimento, cal, concreto ou
-       argamassa como palavras de classificação.
-    6. Informações adicionais não contaminam a classificação
-       quando existem itens identificados.
-    7. Se nenhuma regra prioritária for encontrada, utiliza
-       a classificação genérica existente.
+    O app.py pode passar um contexto XML inteiro dentro de
+    items_list. Por isso esta função aceita tanto descrições
+    simples quanto o contexto enriquecido.
+
+    Prioridades:
+
+    1. Tijolo/bloco;
+    2. Ferro/aço/vergalhão/arame;
+    3. Demais categorias por palavras-chave;
+    4. Material diversos.
+
+    CIMENTO e CAL NÃO classificam automaticamente na 002.
     """
 
     # --------------------------------------------------------
-    # Garante lista
+    # NORMALIZA ENTRADA
     # --------------------------------------------------------
 
     if items_list is None:
         items_list = []
 
-    if isinstance(
-        items_list,
-        str
-    ):
+    if isinstance(items_list, str):
         items_list = [items_list]
 
+    itens_validos = []
+
+    for item in items_list:
+
+        if item is None:
+            continue
+
+        texto = str(item).strip()
+
+        if texto:
+            itens_validos.append(texto)
+
     # --------------------------------------------------------
-    # Remove itens vazios
+    # TEXTO DOS ITENS
     # --------------------------------------------------------
 
-    itens_validos = [
+    texto_itens = " ".join(itens_validos)
 
-        str(item).strip()
+    # --------------------------------------------------------
+    # 1. TIJOLO / BLOCO
+    # --------------------------------------------------------
 
-        for item in items_list
+    texto_normalizado = _normalize(texto_itens)
 
-        if (
-            item is not None
-            and str(item).strip()
-        )
+    padroes_tijolo = [
+        r"\btijolos?\b",
+        r"\bblocos?\s+ceramicos?\b",
+        r"\bblocos?\s+de\s+ceramica\b",
+        r"\bblocos?\s+concreto\b",
+        r"\bblocos?\s+de\s+concreto\b",
+        r"\bblocos?\s+estruturais?\b",
     ]
 
-    # ========================================================
-    # ETAPA 1 — CLASSIFICAÇÃO PRIORITÁRIA ITEM POR ITEM
-    # ========================================================
+    for padrao in padroes_tijolo:
 
-    categorias_detectadas = []
+        if re.search(padrao, texto_normalizado):
 
-    for item in itens_validos:
-
-        categoria = _encontrar_categoria_prioritaria(
-            item
-        )
-
-        if categoria:
-
-            categorias_detectadas.append(
-                (
-                    categoria,
-                    item,
-                )
+            return (
+                "DESPESAS COM TIJOLOS",
+                "Classificação direta: tijolo/bloco identificado nos itens da NF."
             )
 
-    # ========================================================
-    # ETAPA 2 — TIJOLOS / BLOCOS
-    #
-    # Tem prioridade sobre "concreto".
-    #
-    # Exemplo:
-    # "BLOCO DE CONCRETO"
-    #
-    # Resultado:
-    # DESPESAS COM TIJOLOS
-    # ========================================================
+    # --------------------------------------------------------
+    # 2. FERRO / AÇO / ARAME / VERGALHÃO
+    # --------------------------------------------------------
 
-    categorias_tijolo = [
-
-        item
-
-        for categoria, item
-        in categorias_detectadas
-
-        if categoria
-        == "DESPESAS COM TIJOLOS"
+    padroes_ferro = [
+        r"\bvergalhoes?\b",
+        r"\bferro\b",
+        r"\barame\b",
+        r"\baco\b",
+        r"\bbarras?\s+de\s+ferro\b",
+        r"\bbarras?\s+de\s+aco\b",
+        r"\bperfil\s+de\s+aco\b",
+        r"\bperfil\s+metalico\b",
+        r"\bcantoneira\b",
+        r"\bmetalao\b",
+        r"\btrelica\b",
+        r"\btela\s+soldada\b",
+        r"\btela\s+galvanizada\b",
+        r"\bferro\s+redondo\b",
+        r"\bferro\s+chato\b",
+        r"\bferro\s+quadrado\b",
+        r"\bferro\s+mecanico\b",
+        r"\baco\s+carbono\b",
     ]
 
-    if categorias_tijolo:
+    for padrao in padroes_ferro:
 
-        return (
-            "DESPESAS COM TIJOLOS",
-            "Classificação direta por item: tijolo/bloco identificado.",
-        )
+        if re.search(padrao, texto_normalizado):
 
-    # ========================================================
-    # ETAPA 3 — FERRO / AÇO / VERGALHÃO / ARAME
-    # ========================================================
+            return (
+                "DESPESAS COM CIMENTO CAL FERRO ARAME",
+                "Classificação direta: ferro/aço/vergalhão/arame identificado nos itens da NF."
+            )
 
-    categorias_ferro = [
-
-        item
-
-        for categoria, item
-        in categorias_detectadas
-
-        if (
-            categoria
-            == "DESPESAS COM CIMENTO CAL FERRO ARAME"
-        )
-    ]
-
-    if categorias_ferro:
-
-        return (
-            "DESPESAS COM CIMENTO CAL FERRO ARAME",
-            "Classificação direta por item: ferro/aço/vergalhão/arame identificado.",
-        )
-
-    # ========================================================
-    # ETAPA 4 — CLASSIFICAÇÃO GENÉRICA
-    #
-    # SOMENTE OS ITENS SÃO UTILIZADOS.
-    #
-    # O inf_adic não entra aqui para evitar que observações
-    # da nota contaminem a classificação do produto.
-    # ========================================================
-
-    raw = " ".join(
-        itens_validos
-    )
-
-    text = _texto_normalizado(
-        raw
-    )
+    # --------------------------------------------------------
+    # 3. CLASSIFICAÇÃO GENÉRICA
+    # --------------------------------------------------------
 
     scores = {}
 
-    for code, (
-        desc,
-        keywords
-    ) in HIKARI_DESPESAS.items():
-
-        # ----------------------------------------------------
-        # Categoria 002:
-        #
-        # Mesmo que futuramente alguém acrescente novamente
-        # "cimento", "cal", "concreto" etc. ao dicionário,
-        # essas palavras não serão usadas para classificar
-        # essa categoria.
-        # ----------------------------------------------------
-
-        if (
-            desc
-            == "DESPESAS COM CIMENTO CAL FERRO ARAME"
-        ):
-
-            palavras_proibidas = {
-                "cimento",
-                "cal",
-                "concreto",
-                "argamassa",
-                "cp ii",
-                "cp iii",
-                "cp iv",
-            }
-
-            keywords = [
-
-                kw
-
-                for kw in keywords
-
-                if _texto_normalizado(kw)
-                not in palavras_proibidas
-            ]
+    for codigo, (descricao, keywords) in HIKARI_DESPESAS.items():
 
         score = 0
 
-        for kw in keywords:
+        for keyword in keywords:
 
-            kw_normalizado = _texto_normalizado(
-                kw
-            )
+            keyword_normalizada = _normalize(keyword)
 
-            if not kw_normalizado:
+            if not keyword_normalizada:
                 continue
 
-            # ------------------------------------------------
-            # Palavra inteira.
-            #
-            # Evita que uma parte de outra palavra gere
-            # classificação indevida.
-            # ------------------------------------------------
-
-            padrao = (
-                r"\b"
-                + re.escape(
-                    kw_normalizado
-                )
-                + r"\b"
+            pattern = _keyword_pattern(
+                keyword_normalizada
             )
 
-            if re.search(
-                padrao,
-                text
+            if pattern and re.search(
+                pattern,
+                texto_normalizado
             ):
-
                 score += 1
 
-        scores[desc] = score
+        scores[descricao] = score
 
-    # ========================================================
-    # ETAPA 5 — MAIOR PONTUAÇÃO
-    # ========================================================
+    # --------------------------------------------------------
+    # MELHOR CATEGORIA
+    # --------------------------------------------------------
 
     if scores:
 
-        best_cat = max(
+        melhor_categoria = max(
             scores,
             key=scores.get
         )
 
-        best_score = scores[
-            best_cat
+        melhor_score = scores[
+            melhor_categoria
         ]
 
-        if best_score > 0:
+        if melhor_score > 0:
 
             return (
-                best_cat,
-                (
-                    "Detectado via palavras-chave "
-                    f"dos itens (Score: {best_score})."
-                ),
+                melhor_categoria,
+                f"Detectado via palavras-chave dos itens (Score: {melhor_score})."
             )
 
-    # ========================================================
-    # ETAPA 6 — SEM CLASSIFICAÇÃO
-    # ========================================================
+    # --------------------------------------------------------
+    # FALLBACK
+    # --------------------------------------------------------
 
     return (
         "DESPESAS COM MATERIAL DIVERSOS",
-        "Nenhuma regra de material foi identificada.",
+        "Nenhuma regra de material foi identificada."
+    )
+
+
+# ============================================================
+# SUGESTÃO DE OBRA
+# ============================================================
+
+# Apelidos adicionais para melhorar identificação pelo XML.
+#
+# A chave precisa ser exatamente o nome existente em HIKARI_OBRAS.
+_OBRA_ALIASES = {
+
+    "CETEC SENAI ARAGUAINA": [
+        "cetec senai araguaina",
+        "cetec araguaina",
+    ],
+
+    "ANFITEATRO SESI ARAGUAINA": [
+        "anfiteatro sesi araguaina",
+        "anfiteatro araguaina",
+    ],
+
+    "SEDE SESI SENAI PALMAS-TO": [
+        "sede sesi senai palmas",
+        "sesi senai palmas",
+    ],
+
+    "ETI TAQUARI": [
+        "eti taquari",
+        "taquari",
+    ],
+
+    "ETI PORTO LUZIMANGUES": [
+        "eti porto luzimangues",
+        "porto luzimangues",
+        "luzimangues",
+    ],
+
+    "SESI DR GURUPI": [
+        "sesi dr gurupi",
+        "sesi gurupi",
+    ],
+
+    "BLOCO IFTO ARAGUAINA": [
+        "bloco ifto araguaina",
+        "ifto araguaina",
+    ],
+
+    "REFORMA DUQUE DE CAXIAS II": [
+        "reforma duque de caxias ii",
+        "duque de caxias ii",
+        "duque de caxias",
+    ],
+
+    "AMPLIACAO SEDE CREA PALMAS": [
+        "ampliacao sede crea palmas",
+        "sede crea palmas",
+        "crea palmas",
+    ],
+
+    "CICLOVIA CESAMAR": [
+        "ciclovia cesamar",
+        "cesamar",
+    ],
+
+    "CENTRO DE CONVENCOES PARAISO": [
+        "centro de convencoes paraiso",
+        "convencoes paraiso",
+    ],
+
+    "CENTRO DE ATENDIMENTO SOCIOEDUCATIVO DE ARAGUAINA": [
+        "centro de atendimento socioeducativo de araguaina",
+        "socioeducativo de araguaina",
+        "socioeducativo araguaina",
+    ],
+
+    "GUARITA SENAI CT GURUPI": [
+        "guarita senai ct gurupi",
+        "guarita senai gurupi",
+    ],
+}
+
+
+def suggest_project(
+    inf_adic="",
+    cno=""
+):
+    """
+    Sugere a obra a partir do texto/contexto XML.
+
+    Assinatura compatível com app.py:
+
+        suggest_project(texto_busca, cno)
+
+    Retorna:
+        (nome_da_obra, motivo)
+
+    O app.py atual já tenta identificar o CNO usando contas_db
+    antes de chamar esta função. Portanto aqui fazemos uma
+    segunda camada textual segura.
+    """
+
+    texto = _normalize(inf_adic)
+
+    cno_texto = str(cno or "").strip()
+
+    # --------------------------------------------------------
+    # PROCURA NOME COMPLETO DAS OBRAS
+    # --------------------------------------------------------
+
+    candidatos = []
+
+    for classificacao, (
+        codigo,
+        nome_obra
+    ) in HIKARI_OBRAS.items():
+
+        if nome_obra == "CUSTO DA OBRA GERAL":
+            continue
+
+        nome_normalizado = _normalize(
+            nome_obra
+        )
+
+        if (
+            nome_normalizado
+            and nome_normalizado in texto
+        ):
+
+            candidatos.append(
+                (
+                    len(nome_normalizado),
+                    nome_obra,
+                    "nome completo"
+                )
+            )
+
+    # --------------------------------------------------------
+    # PROCURA APELIDOS
+    # --------------------------------------------------------
+
+    for nome_obra, aliases in _OBRA_ALIASES.items():
+
+        for alias in aliases:
+
+            alias_normalizado = _normalize(
+                alias
+            )
+
+            if (
+                alias_normalizado
+                and alias_normalizado in texto
+            ):
+
+                candidatos.append(
+                    (
+                        len(alias_normalizado),
+                        nome_obra,
+                        alias
+                    )
+                )
+
+    # --------------------------------------------------------
+    # ESCOLHE A CORRESPONDÊNCIA MAIS ESPECÍFICA
+    # --------------------------------------------------------
+
+    if candidatos:
+
+        candidatos.sort(
+            key=lambda item: item[0],
+            reverse=True
+        )
+
+        _, obra, termo = candidatos[0]
+
+        if cno_texto:
+
+            return (
+                obra,
+                f"Obra identificada pelo contexto do XML; CNO informado: {cno_texto}."
+            )
+
+        return (
+            obra,
+            f"Obra identificada por correspondência textual: {termo}."
+        )
+
+    # --------------------------------------------------------
+    # FALLBACK
+    # --------------------------------------------------------
+
+    if cno_texto:
+
+        return (
+            "CUSTO DA OBRA GERAL",
+            f"CNO {cno_texto} não possui correspondência no cadastro legado; mantida Obra Geral."
+        )
+
+    return (
+        "CUSTO DA OBRA GERAL",
+        "Nenhuma obra específica identificada; mantida Obra Geral."
     )
