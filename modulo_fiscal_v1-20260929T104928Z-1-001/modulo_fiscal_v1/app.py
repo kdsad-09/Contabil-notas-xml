@@ -3648,6 +3648,22 @@ elif page == "Exportacao":
                 ""
             )
 
+            # Código contábil do fornecedor já identificado na Triagem.
+            # Usa o mesmo cadastro/mapeamento já existente no sistema.
+            uid_boleto = d.get("uid", "")
+
+            fornec_info_boleto = (
+                st.session_state
+                .get("fornecedores_map", {})
+                .get(uid_boleto, {})
+                or {}
+            )
+
+            codigo_fornecedor = str(
+                fornec_info_boleto.get("codigo_contabil", "")
+                or ""
+            ).strip()
+
             numero_nf = d.get(
                 "nNF",
                 ""
@@ -3766,6 +3782,7 @@ elif page == "Exportacao":
                     {
                         "Vencimento": venc_dt,
                         "Fornecedor": fornecedor,
+                        "Código Fornecedor": codigo_fornecedor,
                         "CNPJ": cnpj,
                         "NF": numero_nf,
                         "Parcela": numero_parcela,
@@ -3890,6 +3907,7 @@ elif page == "Exportacao":
                     [
                         "Vencimento",
                         "Fornecedor",
+                        "Código Fornecedor",
                         "CNPJ",
                         "NF",
                         "Parcela",
@@ -3947,6 +3965,7 @@ elif page == "Exportacao":
                 [
                     "Vencimento",
                     "Fornecedor",
+                    "Código Fornecedor",
                     "CNPJ",
                     "NF",
                     "Parcela",
@@ -3986,12 +4005,13 @@ elif page == "Exportacao":
                 # Largura das colunas
                 worksheet.column_dimensions["A"].width = 15
                 worksheet.column_dimensions["B"].width = 40
-                worksheet.column_dimensions["C"].width = 20
-                worksheet.column_dimensions["D"].width = 15
-                worksheet.column_dimensions["E"].width = 12
-                worksheet.column_dimensions["F"].width = 18
-                worksheet.column_dimensions["G"].width = 25
-                worksheet.column_dimensions["H"].width = 15
+                worksheet.column_dimensions["C"].width = 18
+                worksheet.column_dimensions["D"].width = 20
+                worksheet.column_dimensions["E"].width = 15
+                worksheet.column_dimensions["F"].width = 12
+                worksheet.column_dimensions["G"].width = 18
+                worksheet.column_dimensions["H"].width = 25
+                worksheet.column_dimensions["I"].width = 15
 
                 # Formatação das linhas
                 for row in range(
@@ -4006,14 +4026,14 @@ elif page == "Exportacao":
 
                     # Valor
                     worksheet[
-                        f"F{row}"
+                        f"G{row}"
                     ].number_format = (
                         'R$ #,##0.00'
                     )
 
                     # Emissão
                     worksheet[
-                        f"H{row}"
+                        f"I{row}"
                     ].number_format = "DD/MM/YYYY"
 
             excel_buffer.seek(0)
