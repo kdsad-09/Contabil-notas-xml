@@ -3341,16 +3341,16 @@ elif page == "Exportacao":
     # TABS
     # ═══════════════════════════════════════════════════════════════
 
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
-    [
-        "Tabela Geral (Parcelas)",
-        "Por Obra",
-        "Por Categoria",
-        "Resumo por Nota",
-        "Retornos/Devoluções",
-        "💳 Boletos a Vencer",
-    ]
-)
+        tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
+        [
+            "Tabela Geral (Parcelas)",
+            "Por Obra",
+            "Por Categoria",
+            "Resumo por Nota",
+            "Retornos/Devoluções",
+            "💳 Boletos a Vencer",
+        ]
+    )
 
     with tab1:
 
