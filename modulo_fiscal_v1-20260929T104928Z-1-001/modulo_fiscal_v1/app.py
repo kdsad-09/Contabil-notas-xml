@@ -3341,13 +3341,16 @@ elif page == "Exportacao":
     # TABS
     # ═══════════════════════════════════════════════════════════════
 
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(
-        [
-            "Tabela Geral (Parcelas)",
-            "Por Obra",
-            "Por Categoria",
-            "Resumo por Nota",
-            "Retornos/Devoluções",
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
+    [
+        "Tabela Geral (Parcelas)",
+        "Por Obra",
+        "Por Categoria",
+        "Resumo por Nota",
+        "Retornos/Devoluções",
+        "💳 Boletos a Vencer",
+    ]
+)
         ]
     )
 
@@ -3588,7 +3591,446 @@ elif page == "Exportacao":
                     "Total em Retornos",
                     _fmt_brl(total_ret)
                 )
+    # ═══════════════════════════════════════════════════════════════
+    # TAB 6 — BOLETOS A VENCER
+    # ═══════════════════════════════════════════════════════════════
 
+    with tab6:
+
+        st.markdown("### 💳 Boletos a Vencer")
+
+        st.caption(
+            "Exibe somente notas com forma de pagamento Boleto "
+            "e parcelas com vencimento posterior à emissão. "
+            "Pagamentos à vista são ignorados."
+        )
+
+        boletos_rows = []
+
+        # Evita repetir a mesma parcela quando a NF foi
+        # separada internamente por CFOP.
+        boletos_vistos = set()
+
+        for d in export_list:
+
+            # --------------------------------------------------
+            # SOMENTE BOLETO
+            # --------------------------------------------------
+
+            pagamento_codigo = str(
+                d.get("pagamento_tipo_cod", "") or ""
+            ).strip()
+
+            pagamento_texto = str(
+                d.get("pagamento", "") or ""
+            ).upper()
+
+            eh_boleto = (
+                pagamento_codigo == "15"
+                or "BOLETO" in pagamento_texto
+            )
+
+            if not eh_boleto:
+                continue
+
+            # --------------------------------------------------
+            # IGNORA PAGAMENTO À VISTA
+            # --------------------------------------------------
+
+            if d.get("is_a_vista", False):
+                continue
+
+            fornecedor = d.get(
+                "fornecedor",
+                ""
+            )
+
+            cnpj = d.get(
+                "fornecedor_cnpj",
+                ""
+            )
+
+            numero_nf = d.get(
+                "nNF",
+                ""
+            )
+
+            data_emissao = d.get(
+                "data_emissao",
+                ""
+            )
+
+            parcelas = d.get(
+                "parcelas",
+                []
+            ) or []
+
+            # --------------------------------------------------
+            # ANALISA CADA DUPLICATA / BOLETO
+            # --------------------------------------------------
+
+            for p in parcelas:
+
+                vencimento = str(
+                    p.get("dVenc", "") or ""
+                ).strip()
+
+                numero_parcela = str(
+                    p.get("nDup", "1") or "1"
+                ).strip()
+
+                try:
+                    valor = float(
+                        p.get("vDup", 0) or 0
+                    )
+                except (TypeError, ValueError):
+                    valor = 0.0
+
+                if not vencimento:
+                    continue
+
+                # ----------------------------------------------
+                # CONVERTE DATAS
+                # ----------------------------------------------
+
+                venc_dt = pd.to_datetime(
+                    vencimento,
+                    errors="coerce"
+                )
+
+                emissao_dt = pd.to_datetime(
+                    data_emissao,
+                    errors="coerce"
+                )
+
+                if pd.isna(venc_dt):
+                    continue
+
+                # ----------------------------------------------
+                # IGNORA BOLETO À VISTA
+                # vencimento = emissão
+                # ----------------------------------------------
+
+                if (
+                    not pd.isna(emissao_dt)
+                    and venc_dt.date()
+                    <= emissao_dt.date()
+                ):
+                    continue
+
+                # ----------------------------------------------
+                # EVITA DUPLICIDADE
+                # ----------------------------------------------
+
+                chave_boleto = (
+                    str(numero_nf),
+                    str(cnpj),
+                    numero_parcela,
+                    venc_dt.date(),
+                    round(valor, 2),
+                )
+
+                if chave_boleto in boletos_vistos:
+                    continue
+
+                boletos_vistos.add(
+                    chave_boleto
+                )
+
+                # ----------------------------------------------
+                # SITUAÇÃO DO VENCIMENTO
+                # ----------------------------------------------
+
+                hoje = pd.Timestamp.today().normalize()
+
+                if venc_dt.normalize() < hoje:
+                    situacao = "🔴 Vencido"
+
+                elif venc_dt.normalize() == hoje:
+                    situacao = "🟠 Vence hoje"
+
+                else:
+
+                    dias = (
+                        venc_dt.normalize()
+                        - hoje
+                    ).days
+
+                    situacao = (
+                        f"🟢 A vencer ({dias} dias)"
+                    )
+
+                # ----------------------------------------------
+                # ADICIONA À TABELA
+                # ----------------------------------------------
+
+                boletos_rows.append(
+                    {
+                        "Vencimento": venc_dt,
+                        "Fornecedor": fornecedor,
+                        "CNPJ": cnpj,
+                        "NF": numero_nf,
+                        "Parcela": numero_parcela,
+                        "Valor": valor,
+                        "Situação": situacao,
+                        "Emissão": data_emissao,
+                    }
+                )
+
+        # ======================================================
+        # MONTA TABELA
+        # ======================================================
+
+        if not boletos_rows:
+
+            st.success(
+                "Nenhum boleto a prazo encontrado "
+                "nas notas carregadas."
+            )
+
+        else:
+
+            df_boletos = pd.DataFrame(
+                boletos_rows
+            )
+
+            # Mais próximo do vencimento primeiro
+            df_boletos = (
+                df_boletos
+                .sort_values(
+                    by="Vencimento",
+                    ascending=True
+                )
+                .reset_index(drop=True)
+            )
+
+            # ==================================================
+            # INDICADORES
+            # ==================================================
+
+            total_boletos = len(
+                df_boletos
+            )
+
+            valor_total_boletos = (
+                df_boletos["Valor"].sum()
+            )
+
+            hoje = (
+                pd.Timestamp
+                .today()
+                .normalize()
+            )
+
+            vencidos = (
+                df_boletos[
+                    df_boletos["Vencimento"]
+                    .dt.normalize()
+                    < hoje
+                ]
+            )
+
+            valor_vencido = (
+                vencidos["Valor"].sum()
+                if not vencidos.empty
+                else 0
+            )
+
+            m1, m2, m3 = st.columns(3)
+
+            m1.metric(
+                "Boletos",
+                total_boletos
+            )
+
+            m2.metric(
+                "Total em boletos",
+                _fmt_brl(
+                    valor_total_boletos
+                )
+            )
+
+            m3.metric(
+                "Total vencido",
+                _fmt_brl(
+                    valor_vencido
+                )
+            )
+
+            st.divider()
+
+            # ==================================================
+            # FORMATAÇÃO PARA EXIBIÇÃO
+            # ==================================================
+
+            df_boletos_view = (
+                df_boletos.copy()
+            )
+
+            df_boletos_view[
+                "Vencimento"
+            ] = (
+                df_boletos_view[
+                    "Vencimento"
+                ]
+                .dt.strftime(
+                    "%d/%m/%Y"
+                )
+            )
+
+            df_boletos_view[
+                "Valor"
+            ] = (
+                df_boletos_view[
+                    "Valor"
+                ]
+                .apply(_fmt_brl)
+            )
+
+                       st.dataframe(
+                df_boletos_view[
+                    [
+                        "Vencimento",
+                        "Fornecedor",
+                        "CNPJ",
+                        "NF",
+                        "Parcela",
+                        "Valor",
+                        "Situação",
+                        "Emissão",
+                    ]
+                ],
+                use_container_width=True,
+                hide_index=True,
+                height=450,
+            )
+
+            # ==================================================
+            # DOWNLOAD EXCEL — BOLETOS A VENCER
+            # ==================================================
+
+            from io import BytesIO
+
+            excel_buffer = BytesIO()
+
+            # Usa uma cópia própria para o Excel.
+            # Não altera df_boletos nem outras partes do sistema.
+            df_excel_boletos = df_boletos.copy()
+
+            # Datas como datas reais do Excel
+            df_excel_boletos["Vencimento"] = (
+                pd.to_datetime(
+                    df_excel_boletos["Vencimento"],
+                    errors="coerce"
+                )
+            )
+
+            df_excel_boletos["Emissão"] = (
+                pd.to_datetime(
+                    df_excel_boletos["Emissão"],
+                    errors="coerce"
+                )
+            )
+
+            # Remove emojis da situação para deixar
+            # o arquivo Excel mais limpo
+            df_excel_boletos["Situação"] = (
+                df_excel_boletos["Situação"]
+                .astype(str)
+                .str.replace(
+                    r"^[🔴🟠🟢]\s*",
+                    "",
+                    regex=True
+                )
+            )
+
+            # Ordem das colunas no Excel
+            df_excel_boletos = df_excel_boletos[
+                [
+                    "Vencimento",
+                    "Fornecedor",
+                    "CNPJ",
+                    "NF",
+                    "Parcela",
+                    "Valor",
+                    "Situação",
+                    "Emissão",
+                ]
+            ]
+
+            with pd.ExcelWriter(
+                excel_buffer,
+                engine="openpyxl"
+            ) as writer:
+
+                df_excel_boletos.to_excel(
+                    writer,
+                    index=False,
+                    sheet_name="Boletos a Vencer"
+                )
+
+                # ----------------------------------------------
+                # FORMATAÇÃO DO EXCEL
+                # ----------------------------------------------
+
+                worksheet = writer.sheets[
+                    "Boletos a Vencer"
+                ]
+
+                # Congela cabeçalho
+                worksheet.freeze_panes = "A2"
+
+                # Ativa filtro
+                worksheet.auto_filter.ref = (
+                    worksheet.dimensions
+                )
+
+                # Largura das colunas
+                worksheet.column_dimensions["A"].width = 15
+                worksheet.column_dimensions["B"].width = 40
+                worksheet.column_dimensions["C"].width = 20
+                worksheet.column_dimensions["D"].width = 15
+                worksheet.column_dimensions["E"].width = 12
+                worksheet.column_dimensions["F"].width = 18
+                worksheet.column_dimensions["G"].width = 25
+                worksheet.column_dimensions["H"].width = 15
+
+                # Formatação das linhas
+                for row in range(
+                    2,
+                    worksheet.max_row + 1
+                ):
+
+                    # Vencimento
+                    worksheet[
+                        f"A{row}"
+                    ].number_format = "DD/MM/YYYY"
+
+                    # Valor
+                    worksheet[
+                        f"F{row}"
+                    ].number_format = (
+                        'R$ #,##0.00'
+                    )
+
+                    # Emissão
+                    worksheet[
+                        f"H{row}"
+                    ].number_format = "DD/MM/YYYY"
+
+            excel_buffer.seek(0)
+
+            st.download_button(
+                label="📥 Baixar boletos a vencer em Excel",
+                data=excel_buffer.getvalue(),
+                file_name="boletos_a_vencer.xlsx",
+                mime=(
+                    "application/vnd.openxmlformats-"
+                    "officedocument.spreadsheetml.sheet"
+                ),
+                use_container_width=True,
+                key="download_boletos_vencer_excel",
+            )
     # ═══════════════════════════════════════════════════════════════
     # DOWNLOADS
     # ═══════════════════════════════════════════════════════════════
