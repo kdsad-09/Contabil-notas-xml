@@ -3351,8 +3351,6 @@ elif page == "Exportacao":
         "💳 Boletos a Vencer",
     ]
 )
-        ]
-    )
 
     with tab1:
 
