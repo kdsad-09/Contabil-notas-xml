@@ -35,7 +35,7 @@ HIKARI_DESPESAS = {
         "combustivel", "gasolina", "diesel", "oleo", "lubrificante",
         "graxa", "etanol", "alcool",
     ]),
-    "002":"002": ("DESPESAS COM CIMENTO CAL FERRO ARAME", [
+    "002": ("DESPESAS COM CIMENTO CAL FERRO ARAME", [
     "ferro",
     "arame",
     "aco",
