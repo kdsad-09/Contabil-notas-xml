@@ -3121,239 +3121,227 @@ elif page == "Exportacao":
     # TABELA PRINCIPAL
     # ═══════════════════════════════════════════════════════════════
 
-    rows = []
+       rows = []
 
-for d in export_list:
+    for d in export_list:
 
-    uid = d["uid"]
+        uid = d["uid"]
 
-    # ==========================================================
-    # CATEGORIA
-    # ==========================================================
+        # ==========================================================
+        # CATEGORIA
+        # ==========================================================
 
-    cat = st.session_state[
-        "categories"
-    ].get(
-        uid,
-        "DESPESAS COM MATERIAL DIVERSOS"
-    )
-
-    # ==========================================================
-    # OBRA
-    # ==========================================================
-
-    obra = st.session_state[
-        "obras"
-    ].get(
-        uid,
-        DEFAULT_OBRA
-    )
-
-    # ==========================================================
-    # CÓDIGO CONTÁBIL
-    # ==========================================================
-
-    codigo = st.session_state[
-        "codigos"
-    ].get(
-        uid,
-        ""
-    )
-
-    if not codigo:
-
-        codigo, _ = (
-            _resolve_codigo_contabil(
-                cat,
-                obra
-            )
+        cat = st.session_state[
+            "categories"
+        ].get(
+            uid,
+            "DESPESAS COM MATERIAL DIVERSOS"
         )
 
-    # ==========================================================
-    # TIPO DA NF
-    # ==========================================================
+        # ==========================================================
+        # OBRA
+        # ==========================================================
 
-    tipo_nf = d.get(
-        "tipo_nf_classificado",
-        "Entrada"
-    )
+        obra = st.session_state[
+            "obras"
+        ].get(
+            uid,
+            DEFAULT_OBRA
+        )
 
-    # ==========================================================
-    # CFOP
-    #
-    # O XML já foi separado por CFOP anteriormente.
-    # Portanto cada registro representa:
-    #
-    # NF + CFOP
-    #
-    # quando existir mais de um CFOP.
-    # ==========================================================
+        # ==========================================================
+        # CÓDIGO CONTÁBIL
+        # ==========================================================
 
-    cfop = str(
-        d.get(
-            "cfop_destaque",
+        codigo = st.session_state[
+            "codigos"
+        ].get(
+            uid,
             ""
         )
-        or ""
-    ).strip()
 
-    # ==========================================================
-    # VALOR
-    #
-    # NÃO UTILIZAR MAIS AS PARCELAS.
-    #
-    # valor_total:
-    #
-    # - NF com 1 CFOP = total da NF
-    #
-    # - NF com vários CFOPs =
-    #   total proporcional daquele CFOP
-    #
-    # O desconto já foi rateado proporcionalmente
-    # pelo xml_processor.py.
-    # ==========================================================
+        if not codigo:
 
-    try:
-
-        valor_lancamento = float(
-            d.get(
-                "valor_total",
-                0
+            codigo, _ = (
+                _resolve_codigo_contabil(
+                    cat,
+                    obra
+                )
             )
-            or 0
+
+        # Garante que o código sempre possa ser tratado como texto.
+        codigo = str(
+            codigo or ""
         )
 
-    except Exception:
+        # ==========================================================
+        # TIPO DA NF
+        # ==========================================================
 
-        valor_lancamento = 0.0
+        tipo_nf = d.get(
+            "tipo_nf_classificado",
+            "Entrada"
+        )
 
-    # ==========================================================
-    # CRIA UMA ÚNICA LINHA
-    # ==========================================================
+        # ==========================================================
+        # CFOP
+        # ==========================================================
 
-    rows.append(
-        {
-            "Tipo NF":
-                tipo_nf,
+        cfop = str(
+            d.get(
+                "cfop_destaque",
+                ""
+            )
+            or ""
+        ).strip()
 
-            "Fornecedor":
+        # ==========================================================
+        # VALOR DO LANÇAMENTO
+        #
+        # Não utiliza parcelas/boletos.
+        #
+        # 1 CFOP:
+        #     valor total da NF.
+        #
+        # Vários CFOPs:
+        #     valor correspondente ao CFOP.
+        #
+        # O desconto proporcional já é considerado no processamento
+        # anterior do XML.
+        # ==========================================================
+
+        try:
+
+            valor_lancamento = float(
                 d.get(
-                    "fornecedor",
-                    ""
-                ),
-
-            # Mantemos o nome da coluna para não quebrar
-            # as outras partes do app.
-            # Porém agora a data utilizada é a emissão,
-            # e não o vencimento do boleto.
-
-            "Vencimento Parcela":
-                d.get(
-                    "data_emissao",
-                    ""
-                ),
-
-            # Mantemos o nome da coluna para compatibilidade.
-            # Agora representa o VALOR DO LANÇAMENTO.
-
-            "Valor Parcela":
-                round(
-                    valor_lancamento,
-                    2
-                ),
-
-            "NF":
-                d.get(
-                    "nNF",
-                    ""
-                ),
-
-            # Não representa mais boleto.
-            # Mostra o CFOP responsável pelo lançamento.
-
-            "Parcela":
-                (
-                    f"CFOP {cfop}"
-                    if cfop
-                    else "NF"
-                ),
-
-            "Data Emissão NF":
-                d.get(
-                    "data_emissao",
-                    ""
-                ),
-
-            "CNPJ Fornecedor":
-                d.get(
-                    "fornecedor_cnpj",
-                    ""
-                ),
-
-            "Cliente":
-                d.get(
-                    "cliente",
-                    ""
-                ),
-
-            "Valor Total NF":
-                valor_lancamento,
-
-            "Codigo Contabil":
-                str(
-                    codigo
-                    or ""
-                ).lstrip(
-                    "~"
-                ),
-
-            "Categoria":
-                cat,
-
-            "Obra":
-                obra,
-
-            "CNO":
-                d.get(
-                    "cno_sugerido",
-                    ""
-                ),
-
-            "Pagamento":
-                d.get(
-                    "pagamento",
-                    ""
-                ),
-
-            "Qtd Itens":
-                d.get(
-                    "qtd_itens",
+                    "valor_total",
                     0
-                ),
+                )
+                or 0
+            )
 
-            "Status":
-                st.session_state[
-                    "approvals"
-                ].get(
-                    uid,
-                    "Pendente"
-                ),
+        except (
+            TypeError,
+            ValueError
+        ):
 
-            "Info Adicional":
-                (
+            valor_lancamento = 0.0
+
+        # ==========================================================
+        # UMA LINHA POR NF / CFOP
+        # ==========================================================
+
+        rows.append(
+            {
+                "Tipo NF":
+                    tipo_nf,
+
+                "Fornecedor":
                     d.get(
-                        "infAdic",
+                        "fornecedor",
                         ""
-                    )
-                    or ""
-                )[:200],
-        }
+                    ),
+
+                "Vencimento Parcela":
+                    d.get(
+                        "data_emissao",
+                        ""
+                    ),
+
+                "Valor Parcela":
+                    round(
+                        valor_lancamento,
+                        2
+                    ),
+
+                "NF":
+                    d.get(
+                        "nNF",
+                        ""
+                    ),
+
+                "Parcela":
+                    (
+                        f"CFOP {cfop}"
+                        if cfop
+                        else "NF"
+                    ),
+
+                "Data Emissão NF":
+                    d.get(
+                        "data_emissao",
+                        ""
+                    ),
+
+                "CNPJ Fornecedor":
+                    d.get(
+                        "fornecedor_cnpj",
+                        ""
+                    ),
+
+                "Cliente":
+                    d.get(
+                        "cliente",
+                        ""
+                    ),
+
+                "Valor Total NF":
+                    round(
+                        valor_lancamento,
+                        2
+                    ),
+
+                "Codigo Contabil":
+                    codigo.lstrip(
+                        "~"
+                    ),
+
+                "Categoria":
+                    cat,
+
+                "Obra":
+                    obra,
+
+                "CNO":
+                    d.get(
+                        "cno_sugerido",
+                        ""
+                    ),
+
+                "Pagamento":
+                    d.get(
+                        "pagamento",
+                        ""
+                    ),
+
+                "Qtd Itens":
+                    d.get(
+                        "qtd_itens",
+                        0
+                    ),
+
+                "Status":
+                    st.session_state[
+                        "approvals"
+                    ].get(
+                        uid,
+                        "Pendente"
+                    ),
+
+                "Info Adicional":
+                    (
+                        d.get(
+                            "infAdic",
+                            ""
+                        )
+                        or ""
+                    )[:200],
+            }
+        )
+
+    df_export = pd.DataFrame(
+        rows
     )
-
-
-df_export = pd.DataFrame(
-    rows
-)
 
     # ═══════════════════════════════════════════════════════════════
     # MANUAIS
