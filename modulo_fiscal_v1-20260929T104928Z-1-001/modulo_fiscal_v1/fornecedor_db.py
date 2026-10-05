@@ -1,139 +1,96 @@
-"""
-fornecedor_db.py — Hikari Construcoes
-Le a planilha de fornecedores (xls/xlsx) e indexa por nome normalizado.
-Match feito por nome do emitente buscando similaridade com razao social.
+"""Cadastro de fornecedores multiempresa do Catraca Fiscal.
 
-Formato esperado (lote hikari custos 08.xlsx, aba Fornecedores):
-  Col 0: codigo_contabil  (ex: 505, 512, ...)
-  Col 1: nome_fornecedor  (ex: "MUNDO DOS FERROS DIST...")
+- Hikari Construções original: preserva o cadastro XLS/XLSX já existente.
+- H K Engenharia, IRKA e Consórcios: usam fornecedores_empresas.json.
+- A empresa ativa é obtida de contas_db.get_empresa_ativa().
 """
-import re
 import os
+import re
+import json
+import unicodedata
 import pandas as pd
 from typing import Optional
 
-_BASE_DIR = os.path.dirname(__file__)
-_EXEMPLO_DIR = os.path.join(_BASE_DIR, "..", "exemplo conf")
+import contas_db
 
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+_EXEMPLO_DIR = os.path.join(_BASE_DIR, "..", "exemplo conf")
+_DATA_DIR = os.path.join(_BASE_DIR, "data")
+
+_FORNECEDORES_JSON = os.path.join(_BASE_DIR, "fornecedores_empresas.json")
 _FORNECEDORES_XLS = os.path.join(_EXEMPLO_DIR, "fornecedores.xls")
 _LOTE_HIKARI_XLSX = os.path.join(_EXEMPLO_DIR, "lote hikari custos 08.xlsx")
+_FORNECEDORES_XLS_DATA = os.path.join(_DATA_DIR, "fornecedores.xls")
+
+_df_cache: dict[str, pd.DataFrame] = {}
+_index_cache: dict[str, dict] = {}
 
 
 def _normalize(text: str) -> str:
     if not text:
         return ""
-    t = str(text).lower().strip()
-    for a, b in [("a","a"),("a","a"),("a","a"),("a","a"),
-                 ("e","e"),("e","e"),("i","i"),("o","o"),
-                 ("o","o"),("o","o"),("u","u"),("c","c")]:
-        pass  # mantido por compatibilidade de logica
-    replacements = [
-        ("\xe1","a"),("\xe0","a"),("\xe2","a"),("\xe3","a"),
-        ("\xe9","e"),("\xea","e"),("\xed","i"),("\xf3","o"),
-        ("\xf4","o"),("\xf5","o"),("\xfa","u"),("\xe7","c"),
-    ]
-    for a, b in replacements:
-        t = t.replace(a, b)
+    t = unicodedata.normalize("NFKD", str(text))
+    t = t.encode("ascii", "ignore").decode("ascii").lower().strip()
     t = re.sub(r"[^a-z0-9\s]", " ", t)
     return re.sub(r"\s+", " ", t).strip()
 
 
-def _load_df() -> pd.DataFrame:
-    # Tenta lote hikari primeiro (xlsx sem xlrd)
+def _empresa_ativa() -> str:
     try:
-        df = pd.read_excel(_LOTE_HIKARI_XLSX, sheet_name="Fornecedores", header=None)
+        return contas_db.get_empresa_ativa()
+    except Exception:
+        return "hikari_construcoes_original"
+
+
+def _empty_df() -> pd.DataFrame:
+    return pd.DataFrame(
+        columns=["codigo_contabil", "classificacao", "nome_fornecedor"]
+    )
+
+
+def _padronizar_df(df: pd.DataFrame) -> pd.DataFrame:
+    if df is None or df.empty:
+        return _empty_df()
+
+    df = df.copy()
+
+    if "classificacao" not in df.columns:
+        df["classificacao"] = ""
+
+    df = df[["codigo_contabil", "classificacao", "nome_fornecedor"]]
+
+    df["codigo_contabil"] = pd.to_numeric(
+        df["codigo_contabil"], errors="coerce"
+    )
+    df = df.dropna(subset=["codigo_contabil", "nome_fornecedor"])
+    df["codigo_contabil"] = df["codigo_contabil"].astype(int)
+    df["classificacao"] = df["classificacao"].fillna("").astype(str).str.strip()
+    df["nome_fornecedor"] = (
+        df["nome_fornecedor"].fillna("").astype(str).str.strip()
+    )
+    df = df[df["nome_fornecedor"] != ""]
+
+    return df.reset_index(drop=True)
+
+
+def _load_hikari_original() -> pd.DataFrame:
+    """Mantém o comportamento anterior para a Hikari Construções original."""
+
+    try:
+        df = pd.read_excel(
+            _LOTE_HIKARI_XLSX,
+            sheet_name="Fornecedores",
+            header=None,
+            usecols=[0, 1],
+        )
         df.columns = ["codigo_contabil", "nome_fornecedor"]
-        df = df[df["codigo_contabil"].apply(lambda x: str(x).strip().isdigit())]
-        df["codigo_contabil"] = df["codigo_contabil"].astype(int)
-        df["nome_fornecedor"] = df["nome_fornecedor"].astype(str).str.strip()
-        return df
+        df["classificacao"] = ""
+        return _padronizar_df(df)
     except Exception:
         pass
-    # Fallback: fornecedores.xls
-    try:
-        df = pd.read_excel(_FORNECEDORES_XLS, header=None)
-        df.columns = ["codigo_contabil", "nome_fornecedor"]
-        df = df[df["codigo_contabil"].apply(lambda x: str(x).strip().isdigit())]
-        df["codigo_contabil"] = df["codigo_contabil"].astype(int)
-        df["nome_fornecedor"] = df["nome_fornecedor"].astype(str).str.strip()
-        return df
-    except Exception:
-        pass
-    return pd.DataFrame(columns=["codigo_contabil", "nome_fornecedor"])
 
-
-_df_cache: Optional[pd.DataFrame] = None
-_index_cache: dict = {}
-
-
-def _build_index(df: pd.DataFrame) -> dict:
-    index = {}
-    for _, row in df.iterrows():
-        key = _normalize(str(row["nome_fornecedor"]))
-        if key:
-            index[key] = {
-                "codigo_contabil": int(row["codigo_contabil"]),
-                "nome_original": str(row["nome_fornecedor"]).strip(),
-            }
-    return index
-
-
-def load_fornecedores(force_reload: bool = False) -> pd.DataFrame:
-    global _df_cache
-    if _df_cache is None or force_reload:
-        _df_cache = _load_df()
-    return _df_cache
-
-
-def get_index(force_reload: bool = False) -> dict:
-    global _index_cache
-    if not _index_cache or force_reload:
-        df = load_fornecedores(force_reload)
-        _index_cache = _build_index(df)
-    return _index_cache
-
-
-def lookup_fornecedor_por_nome(nome_emitente: str, threshold: float = 0.55) -> Optional[dict]:
-    """
-    Busca fornecedor pelo nome do emitente da NF.
-    Retorna dict {codigo_contabil, nome_original, score} ou None.
-    """
-    if not nome_emitente:
-        return None
-    index = get_index()
-    query = _normalize(nome_emitente)
-
-    # Match exato
-    if query in index:
-        return {**index[query], "score": 1.0}
-
-    # Match por tokens (Jaccard + containment)
-    query_tokens = set(q for q in query.split() if len(q) > 2)
-    best_match = None
-    best_score = 0.0
-
-    for key, value in index.items():
-        key_tokens = set(k for k in key.split() if len(k) > 2)
-        if not query_tokens or not key_tokens:
-            continue
-        intersection = query_tokens & key_tokens
-        union = query_tokens | key_tokens
-        jaccard = len(intersection) / len(union) if union else 0
-        smaller = min(len(query_tokens), len(key_tokens))
-        containment = len(intersection) / smaller if smaller else 0
-        score = max(jaccard, containment * 0.85)
-        if score > best_score and score >= threshold:
-            best_score = score
-            best_match = {**value, "score": round(score, 3)}
-
-    return best_match
-
-
-def get_all_fornecedores() -> list:
-    df = load_fornecedores()
-    return df.to_dict("records")
-
-
-def reload():
-    load_fornecedores(force_reload=True)
-    get_index(force_reload=True)
+    for caminho in (_FORNECEDORES_XLS, _FORNECEDORES_XLS_DATA):
+        try:
+            df = pd.read_excel(caminho, header=None, usecols=[0, 1])
+            df.columns = ["codigo_contabil", "nome_fornecedor"]
+            df["classificacao"] = ""
