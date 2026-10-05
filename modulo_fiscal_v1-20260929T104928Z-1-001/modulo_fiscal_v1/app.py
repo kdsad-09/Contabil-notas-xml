@@ -66,7 +66,7 @@ def _matches_filters(doc, f_status, f_cat, f_obra, f_tipo, state):
     )
     obra = state["obras"].get(
         uid,
-        "CUSTO DA OBRA GERAL"
+        DEFAULT_OBRA
     )
 
     tipo = doc.get(
@@ -617,8 +617,8 @@ def _buscar_obra_por_varias_fontes(doc, contexto):
             pass
 
     return (
-        "CUSTO DA OBRA GERAL — Cód. 271 (3.1.1.01)",
-        "Obra Geral padrão — nenhuma obra específica identificada no XML"
+        contas_db.get_obra_geral_label(),
+        "Obra Geral padrão da empresa selecionada — nenhuma obra específica identificada no XML"
     )
 
 
@@ -732,16 +732,9 @@ def _resolve_codigo_contabil(categoria: str, obra: str) -> tuple:
         prefix = "~" if info.get("is_fallback") else ""
         return f"{prefix}{cod}", info
 
-    try:
-        legacy_code = get_codigo_contabil(
-            categoria,
-            obra,
-            st.session_state.get("plano_extra_cats")
-        )
-    except Exception:
-        legacy_code = ""
-
-    return legacy_code, info
+    # Em modo multiempresa não usamos fallback de códigos Hikari legados:
+    # um código de outra empresa seria contabilmente incorreto.
+    return "", info
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -749,7 +742,7 @@ def _resolve_codigo_contabil(categoria: str, obra: str) -> tuple:
 # ═══════════════════════════════════════════════════════════════════
 
 st.set_page_config(
-    page_title="Catraca Fiscal v3 — Triagem NF-e Hikari",
+    page_title="Catraca Fiscal v3 — Triagem NF-e Multiempresa",
     page_icon="📋",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -960,6 +953,36 @@ for key, default in [
 
 
 # ═══════════════════════════════════════════════════════════════════
+# EMPRESA ATIVA — MULTIEMPRESA
+# ═══════════════════════════════════════════════════════════════════
+
+_EMPRESA_OPTIONS = contas_db.get_empresa_options()
+_empresa_nomes = list(_EMPRESA_OPTIONS.keys())
+_empresa_padrao = st.session_state.get("empresa_nome")
+if _empresa_padrao not in _empresa_nomes:
+    _empresa_padrao = "IRKA CONSTRUCOES LTDA EPP" if "IRKA CONSTRUCOES LTDA EPP" in _empresa_nomes else _empresa_nomes[0]
+
+_empresa_nome = st.sidebar.selectbox(
+    "Empresa analisada",
+    _empresa_nomes,
+    index=_empresa_nomes.index(_empresa_padrao),
+    key="empresa_seletor",
+)
+st.session_state["empresa_nome"] = _empresa_nome
+st.session_state["empresa_slug"] = _EMPRESA_OPTIONS[_empresa_nome]
+contas_db.set_empresa(st.session_state["empresa_slug"])
+EMPRESA_INFO = contas_db.get_empresa_info()
+DEFAULT_OBRA = contas_db.get_obra_geral_label()
+
+# Evita misturar um lote já processado com o plano de outra empresa.
+_empresa_anterior = st.session_state.get("empresa_ativa_anterior")
+if _empresa_anterior and _empresa_anterior != st.session_state["empresa_slug"]:
+    for _k in ("processed_data", "approvals", "categories", "obras", "codigos", "codigos_info", "fornecedores_map", "ai_reasons"):
+        st.session_state[_k] = [] if _k == "processed_data" else {}
+    st.session_state["ai_classified"] = False
+st.session_state["empresa_ativa_anterior"] = st.session_state["empresa_slug"]
+
+# ═══════════════════════════════════════════════════════════════════
 # LISTAS DINÂMICAS
 # ═══════════════════════════════════════════════════════════════════
 
@@ -972,9 +995,11 @@ CATEGORY_OPTIONS = (
 
 contas_obras_list = contas_db.get_obra_names_for_dropdown()
 
-base_obras = get_all_obras(
-    st.session_state["plano_extra_obras"]
-)
+base_obras = [
+    item.get("nome", "").strip().upper()
+    for item in st.session_state["plano_extra_obras"]
+    if isinstance(item, dict) and item.get("nome")
+]
 
 OBRA_OPTIONS = list(contas_obras_list)
 
@@ -995,7 +1020,7 @@ OBRA_OPTIONS += ["OUTRA (digitar)"]
 with st.sidebar:
 
     st.markdown("## Catraca Fiscal v3")
-    st.caption("Triagem NF-e — Hikari Construcoes")
+    st.caption(f"Triagem NF-e — {EMPRESA_INFO['nome']}")
     st.divider()
 
     page = st.radio(
@@ -1398,7 +1423,7 @@ with st.sidebar:
                                 "obras"
                             ].get(
                                 uid,
-                                "CUSTO DA OBRA GERAL"
+                                DEFAULT_OBRA
                             ),
                         )
 
@@ -1649,7 +1674,7 @@ with st.sidebar:
                 "obras"
             ].get(
                 d["uid"],
-                "CUSTO DA OBRA GERAL"
+                DEFAULT_OBRA
             )
 
             if obra not in obras_dict:
@@ -1952,7 +1977,7 @@ if page == "Triagem":
             "obras"
         ].get(
             uid,
-            "CUSTO DA OBRA GERAL"
+            DEFAULT_OBRA
         )
 
         ai_reason = st.session_state[
@@ -2324,7 +2349,7 @@ if page == "Triagem":
                                     "obras"
                                 ].get(
                                     uid,
-                                    "CUSTO DA OBRA GERAL"
+                                    DEFAULT_OBRA
                                 ),
                             )
                         )
@@ -2350,7 +2375,7 @@ if page == "Triagem":
                                 "obras"
                             ].get(
                                 uid,
-                                "CUSTO DA OBRA GERAL"
+                                DEFAULT_OBRA
                             ),
                         )
                     )
@@ -2481,7 +2506,7 @@ if page == "Triagem":
                 "obras"
             ].get(
                 uid,
-                "CUSTO DA OBRA GERAL"
+                DEFAULT_OBRA
             )
 
             codigo = st.session_state[
@@ -3113,7 +3138,7 @@ elif page == "Exportacao":
             "obras"
         ].get(
             uid,
-            "CUSTO DA OBRA GERAL"
+            DEFAULT_OBRA
         )
 
         codigo = st.session_state[
@@ -3472,7 +3497,7 @@ elif page == "Exportacao":
                 "obras"
             ].get(
                 uid,
-                "CUSTO DA OBRA GERAL"
+                DEFAULT_OBRA
             )
 
             codigo = (
@@ -4185,7 +4210,7 @@ elif page == "Exportacao":
             "obras"
         ].get(
             uid,
-            "CUSTO DA OBRA GERAL"
+            DEFAULT_OBRA
         )
 
         codigo = (
