@@ -40,97 +40,341 @@ except ImportError:
 
 import contas_db
 
-def build_dominio_dataframe(invoices: list, categories: dict, obras: dict,
-                            codigos: dict, approvals: dict,
-                            fornecedores_map: Optional[dict] = None) -> pd.DataFrame:
+def build_dominio_dataframe(
+    invoices: list,
+    categories: dict,
+    obras: dict,
+    codigos: dict,
+    approvals: dict,
+    fornecedores_map: Optional[dict] = None
+) -> pd.DataFrame:
     """
-    Constroi o DataFrame formatado exatamente como a aba Plan1 do Dominio.
+    Monta os lançamentos para o Domínio Contábil.
+
+    REGRA:
+    ------------------------------------------------------------
+    1. NÃO divide o lançamento pelas parcelas/boletos.
+    2. Cada NF gera um lançamento pelo valor total.
+    3. Se a NF possuir CFOPs diferentes, o xml_processor.py já
+       entrega um documento separado para cada CFOP.
+    4. O valor usado é o valor_total daquele CFOP.
+    5. Descontos são rateados proporcionalmente entre os CFOPs
+       pelo xml_processor.py.
+    6. Os boletos continuam separados apenas na aba
+       "Boletos a Vencer".
+    ------------------------------------------------------------
     """
+
     fornecedores_map = fornecedores_map or {}
     rows = []
 
     for doc in invoices:
+
         uid = doc.get("uid", "")
-        # Apenas notas aprovadas (ou pendentes se aprovadas nao forem filtradas)
-        status = approvals.get(uid, "Pendente") if approvals else "Pendente"
+
+        # ======================================================
+        # STATUS
+        # ======================================================
+
+        status = (
+            approvals.get(uid, "Pendente")
+            if approvals
+            else "Pendente"
+        )
+
         if status == "Rejeitado":
             continue
 
-        tipo_nf = doc.get("tipo_nf_classificado", "Entrada")
-        obra_val = obras.get(uid, doc.get("obra_sugerida", "CUSTO DA OBRA GERAL"))
-        cat_val = categories.get(uid, doc.get("categoria", "DESPESAS COM MATERIAL DIVERSOS"))
+        # ======================================================
+        # TIPO DA NOTA
+        # ======================================================
 
-        cod_debito_str = str(codigos.get(uid, "")).replace("~", "").strip()
+        tipo_nf = doc.get(
+            "tipo_nf_classificado",
+            "Entrada"
+        )
+
+        # ======================================================
+        # OBRA
+        # ======================================================
+
+        obra_val = obras.get(
+            uid,
+            doc.get(
+                "obra_sugerida",
+                "CUSTO DA OBRA GERAL"
+            )
+        )
+
+        # ======================================================
+        # CATEGORIA
+        # ======================================================
+
+        cat_val = categories.get(
+            uid,
+            doc.get(
+                "categoria",
+                "DESPESAS COM MATERIAL DIVERSOS"
+            )
+        )
+
+        # ======================================================
+        # CONTA CONTÁBIL DE DÉBITO
+        # ======================================================
+
+        cod_debito_str = str(
+            codigos.get(uid, "")
+        ).replace(
+            "~",
+            ""
+        ).strip()
+
         if cod_debito_str.isdigit():
-            cod_debito = int(cod_debito_str)
+
+            cod_debito = int(
+                cod_debito_str
+            )
+
         else:
-            resolved_cod = contas_db.get_codigo_para_obra_e_categoria(obra_val, cat_val)
-            cod_debito = int(resolved_cod) if resolved_cod else 1027
 
-        # Regra da Conta Credito:
-        # Se for pagamento À VISTA (dinheiro, pix, debito ou sem parcelas a prazo): Conta 5 (Caixa)
-        # Se for a prazo / com parcelas: usa o codigo contábil do fornecedor cadastrado (ou 5 como fallback)
-        fornec_info = fornecedores_map.get(uid, {})
-        cod_fornecedor = fornec_info.get("codigo_contabil") if isinstance(fornec_info, dict) else None
-        is_a_vista = doc.get("is_a_vista", False)
+            resolved_cod = (
+                contas_db
+                .get_codigo_para_obra_e_categoria(
+                    obra_val,
+                    cat_val
+                )
+            )
 
+            cod_debito = (
+                int(resolved_cod)
+                if resolved_cod
+                else 1027
+            )
+
+        # ======================================================
+        # CONTA CONTÁBIL DO FORNECEDOR
+        # ======================================================
+
+        fornec_info = fornecedores_map.get(
+            uid,
+            {}
+        )
+
+        cod_fornecedor = (
+            fornec_info.get(
+                "codigo_contabil"
+            )
+            if isinstance(
+                fornec_info,
+                dict
+            )
+            else None
+        )
+
+        is_a_vista = doc.get(
+            "is_a_vista",
+            False
+        )
+
+        # Pagamento à vista
         if is_a_vista:
-            cod_credito = 5  # Conta 5 Caixa / Pagamento à vista
-        else:
-            cod_credito = cod_fornecedor if cod_fornecedor else 5
 
-        dt_str = doc.get("data_emissao", "")
+            cod_credito = 5
+
+        # Pagamento a prazo
+        else:
+
+            cod_credito = (
+                cod_fornecedor
+                if cod_fornecedor
+                else 5
+            )
+
+        # ======================================================
+        # DATA DO LANÇAMENTO
+        # ======================================================
+
+        dt_str = doc.get(
+            "data_emissao",
+            ""
+        )
+
         try:
-            dt = datetime.datetime.strptime(dt_str[:10], "%Y-%m-%d").date()
+
+            dt = datetime.datetime.strptime(
+                dt_str[:10],
+                "%Y-%m-%d"
+            ).date()
+
         except Exception:
+
             dt = dt_str
 
-        # Se houver parcelas, exporta cada parcela com seu vencimento e valor
-        parcelas = doc.get("parcelas", [])
-        if not parcelas:
-            parcelas = [{
-                "nDup": "1",
-                "dVenc": doc.get("data_emissao"),
-                "vDup": doc.get("valor_total", 0.0)
-            }]
+        # ======================================================
+        # VALOR DO LANÇAMENTO
+        #
+        # IMPORTANTE:
+        #
+        # NÃO utiliza mais vDup / parcelas.
+        #
+        # Se existir apenas um CFOP:
+        #     valor_total = valor total da NF.
+        #
+        # Se existirem vários CFOPs:
+        #     xml_processor.py já criou um registro
+        #     separado para cada CFOP e valor_total
+        #     contém somente o valor daquele CFOP.
+        # ======================================================
 
-        for p in parcelas:
-            val = float(p.get("vDup", 0.0) or 0.0)
-            if val <= 0:
-                continue
+        try:
 
-            n_nf = doc.get("nNF", "")
-            fornec_nome = doc.get("fornecedor", "")
-            cfop_tag = f" CFOP {doc['cfop_destaque']}" if doc.get("cfop_destaque") else ""
+            valor_lancamento = float(
+                doc.get(
+                    "valor_total",
+                    0
+                )
+                or 0
+            )
 
-            if tipo_nf == "Retorno/Devolucao":
-                # Inverte debito e credito
-                d_acc = cod_credito
-                c_acc = cod_debito or 467
-                compl = f"DEVOLUCAO DE COMPRAS NF {n_nf}{cfop_tag} - {fornec_nome}"
-            else:
-                d_acc = cod_debito
-                c_acc = cod_credito
-                compl = f"COMPRAS DE MERCADORIAS NESTA DATA NF {n_nf}{cfop_tag} - {fornec_nome}"
+        except Exception:
 
-            rows.append({
+            valor_lancamento = 0.0
+
+        if valor_lancamento <= 0:
+            continue
+
+        # ======================================================
+        # INFORMAÇÕES DA NF
+        # ======================================================
+
+        n_nf = doc.get(
+            "nNF",
+            ""
+        )
+
+        fornec_nome = doc.get(
+            "fornecedor",
+            ""
+        )
+
+        cfop = str(
+            doc.get(
+                "cfop_destaque",
+                ""
+            )
+            or ""
+        ).strip()
+
+        cfop_tag = (
+            f" CFOP {cfop}"
+            if cfop
+            else ""
+        )
+
+        # ======================================================
+        # DÉBITO / CRÉDITO
+        # ======================================================
+
+        if tipo_nf in (
+            "Retorno/Devolucao",
+            "Retorno/Devolução"
+        ):
+
+            # Devolução:
+            # fornecedor no débito
+            # custo no crédito
+
+            d_acc = cod_credito
+
+            c_acc = (
+                cod_debito
+                or 467
+            )
+
+            compl = (
+                f"DEVOLUCAO DE COMPRAS "
+                f"NF {n_nf}"
+                f"{cfop_tag} - "
+                f"{fornec_nome}"
+            )
+
+        else:
+
+            # Compra normal:
+            # custo no débito
+            # fornecedor no crédito
+
+            d_acc = cod_debito
+
+            c_acc = cod_credito
+
+            compl = (
+                f"COMPRAS DE MERCADORIAS "
+                f"NESTA DATA NF {n_nf}"
+                f"{cfop_tag} - "
+                f"{fornec_nome}"
+            )
+
+        # ======================================================
+        # CRIA APENAS UM LANÇAMENTO
+        # POR NF / CFOP
+        # ======================================================
+
+        rows.append(
+            {
                 "Data": dt,
-                "Cod. Conta Debito": d_acc,
-                "Cod. Conta Credito": c_acc,
-                "Valor": val,
-                "Cod. Historico": "",
-                "Complemento Historico": compl,
-                "Inicia Lote": "",
-                "codigo Matriz/Filial": 1,
-                "Centro de Custo Debito": "",
-                "Centro de Custo Credito": "",
-                "NF": n_nf,
-                "Fornecedor": fornec_nome,
-                "Obra": obras.get(uid, ""),
-                "Categoria": categories.get(uid, ""),
-            })
 
-    return pd.DataFrame(rows)
+                "Cod. Conta Debito":
+                    d_acc,
+
+                "Cod. Conta Credito":
+                    c_acc,
+
+                "Valor":
+                    round(
+                        valor_lancamento,
+                        2
+                    ),
+
+                "Cod. Historico":
+                    "",
+
+                "Complemento Historico":
+                    compl,
+
+                "Inicia Lote":
+                    "",
+
+                "codigo Matriz/Filial":
+                    1,
+
+                "Centro de Custo Debito":
+                    "",
+
+                "Centro de Custo Credito":
+                    "",
+
+                "NF":
+                    n_nf,
+
+                "Fornecedor":
+                    fornec_nome,
+
+                "Obra":
+                    obra_val,
+
+                "Categoria":
+                    cat_val,
+            }
+        )
+
+    # ==========================================================
+    # DATAFRAME
+    # ==========================================================
+
+    return pd.DataFrame(
+        rows
+    )
 
 
 def export_to_dominio_excel(invoices: list, categories: dict, obras: dict,
