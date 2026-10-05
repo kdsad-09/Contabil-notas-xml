@@ -3121,7 +3121,8 @@ elif page == "Exportacao":
     # TABELA PRINCIPAL
     # ═══════════════════════════════════════════════════════════════
 
-       rows = []
+    
+rows = []
 
     for d in export_list:
 
