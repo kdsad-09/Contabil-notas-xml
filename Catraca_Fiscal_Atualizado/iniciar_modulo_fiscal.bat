@@ -3,7 +3,7 @@ chcp 65001 > nul
 title Catraca Fiscal - Triagem Hikari
 
 echo ========================================================
-echo   Iniciando Catraca Fiscal v2 - Hikari Construcoes
+echo   Iniciando Catraca Fiscal v2 -
 echo ========================================================
 echo.
 
